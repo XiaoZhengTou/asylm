@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <audio autoplay loop controls preload="auto" duration>
+     <source src="music/演员.mp3"/>
+ </audio>
+ 
+ <video id="medius" poster="Data/oceans-clip.png" preload>
+    <source src="Data/oceans-clip.ogv"/>;
+    <source src="Data/oceans-clip.webm"/>
+    <source src="Data/oceans-clip.mp4">
+    不支持该视频
+</video>
+<img src="Data/oceans-clip.png" alt=""/>
+<br/>
+<input id="btn" type="button" value="播放"/>
+<script>
+    var medius=document.getElementById("medius");
+    var btn=document.getElementById("btn");
+    var img=document.getElementsByTagName("img")[0];
+    btn.onclick=function(){
+        if(medius.paused){
+            medius.play();
+            this.value="暂停";
+            img.style.display="none"
+        }else{
+            medius.pause();
+            this.value="播放";img.style.display="block"
+        }
+    };
+    medius.addEventListener("poster",function(){
+        if(medius.paused){img.style.display="block"}
+        else{img.style.display="none"}
+    })
+</script>
+</body>
+</html>
