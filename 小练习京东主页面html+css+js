@@ -1,0 +1,1413 @@
+<!doctype html>
+<html>
+<head lang="en">
+    <meta charset="utf-8"/>
+    <title>京东主页</title>
+    <link rel="stylesheet" href="jd1.css"/>
+    <link rel="stylesheet" href="jd2.css"/>
+    <script src="jd.js"></script>
+</head>
+<body>
+<!--页面顶部-->
+<header id="top">
+    <div class="mainbox">
+        <img src="imgs/star.jpg"/>
+        <a href="#">收藏京东</a>
+        <div class="rt">
+            <ul>
+                <li>你好，欢迎来京东！
+                    <a href="#">[登录]</a>
+                    <a href="#">[免费注册]</a>
+                </li>
+                <li>
+                    <b>|</b>
+                    <a href="#">我的订单</a>
+                </li>
+                <li class="vip">
+                    <b>|</b>
+                    <a href="#">会员俱乐部</a>
+                </li>
+                <li class="dakehu">
+                    <b>|</b>
+                    <a href="#">企业频道</a>
+                </li>
+                <li class="app_jd">
+                    <b>|</b>
+                    <a href="#">京东手机</a>
+                </li>
+                <li class="service">
+                    <b>|</b>
+                    <a href="#">客户服务</a>
+                    <ul class="service_items">
+                        <li><a href="">帮助中心</a></li>
+                        <li><a href="#">售后服务</a></li>
+                        <li><a href="#">在线客服</a></li>
+                        <li><a href="#">投诉中心</a></li>
+                        <li><a href="#">客服邮箱</a></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <b>|</b>
+                    <a href="#">网站导航</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!--LOGO和搜索框-->
+    <div id="top_main">
+    <div class="mainbox">
+        <!--logo-->
+        <a href="#" class="a.logo">
+            <img src="imgs/logo.png" alt=""/>
+        </a>
+        <!--搜索和热门搜索-->
+        <div id="search_box">
+            <div class="search">
+                <input type="text" id="text_search"/>
+                <input type="button" value="搜索" id="btn_search"/>
+            </div>
+            <div class="hot_words">
+                <span>热门搜索:</span>
+                <a href="#">家纺11月大促销</a>
+                <a href="#">彩虹电热毯</a>
+                <a href="#">NBA</a>
+                <a href="#">斗鱼TV</a>
+            </div>
+        </div>
+        <!--我的京东-->
+        <div id="my_jd">
+            &nbsp; &nbsp; &nbsp;我的京东
+            <b></b>
+        </div>
+        <!--购物车结算-->
+        <div id="settle_up">
+            &nbsp; &nbsp; &nbsp;去购物车结算
+            <b></b>
+        </div>
+    </div>
+</div>
+<!--主导航-->
+<nav id="nav">
+    <div class="mainbox">
+        <div class="nav1">
+            <a href="#">全部商品分类</a>
+            <b class="aa"></b>
+        </div>
+        <div class="nav2">
+            <a href="#">首页</a>
+            <a href="#">服装城</a>
+            <a href="#">食品</a>
+            <a href="#">团购</a>
+            <a href="#">夺宝城</a>
+            <a href="#">闪购</a>
+            <a href="#">金融</a>
+        </div>
+    </div>
+</nav>
+<!--banner部分广告-->
+<article id="banner">
+        <!--图书电器部分-->
+        <ul class="cut_box">
+            <li>
+                <h3><a href="#">图书、音像、电子商品</a></h3>
+                <div id="sub_box">
+                    <!--分类信息-->
+                    <div class="sub_box_items">
+                        <div>
+                            <a href="#">电子书</a>
+                            <p>
+                                <a href="#">免费</a>
+                                <a href="#">小说</a>
+                                <a href="#">励志</a>
+                                <a href="#">婚礼</a>
+                                <a href="#">文学</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="sub_box_items">
+                        <div>
+                            <a href="#">电子书</a>
+                            <p>
+                                <a href="#">免费</a>
+                                <a href="#">小说</a>
+                                <a href="#">励志</a>
+                                <a href="#">婚礼</a>
+                                <a href="#">文学</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="sub_box_items">
+                        <div>
+                            <a href="#">电子书</a>
+                            <p>
+                                <a href="#">免费</a>
+                                <a href="#">小说</a>
+                                <a href="#">励志</a>
+                                <a href="#">婚礼</a>
+                                <a href="#">文学</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!--图书推荐-->
+                    <div class="sub_box_cat">
+                        <img src="imgs/cate_banner_02.jpg" alt=""/>
+                    </div>
+                    <!--关闭按钮-->
+                    <div class="close" onclick="document.getElementById('').style.display='none'"></div>
+                </div>
+            </li>
+            <li>
+                <h3><a href="#">家用电器</a></h3>
+            </li>
+        </ul>
+        <!--图片广告-->
+        <div id="slider">
+            <!--大的图片-->
+            <div class="slider_adv">
+                    <div class="pic_list">
+                        <div class="pic_list_li" style="width:4000px">
+                            <img src="imgs/banner_02.jpg" alt=""/>
+                            <img src="imgs/left_p001.jpg" alt=""/>
+                            <img src="imgs/left_p002.jpg" alt=""/>
+                            <img src="imgs/left_p003.jpg" alt=""/>
+                            <img src="imgs/ad_01.jpg" alt=""/>
+                            <img src="imgs/ad_02.jpg" alt=""/>
+                          </div>
+                        <div class="btn1"><button id="btn1">&lt;</button></div>
+                        <div class="btn2"><button id="btn2">&gt;</button></div>
+                     </div>
+                <ul>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+            </div>
+            <div class="ad">
+                <a href="#">&lt;</a>
+                <ul>
+                    <li><a href="#"><img src="imgs/ad_01.jpg" alt=""/></a></li>
+                    <li><a href="#"><img src="imgs/ad_02.jpg" alt=""/></a></li>
+                    <li><a href="#"><img src="imgs/ad_03.jpg" alt=""/></a></li>
+                </ul>
+                <a href="#" class="a_last">&gt;</a>
+            </div>
+        </div>
+        <!---京东快报-->
+        <div id="kuaibao">
+            <div class="d0">
+                <a href="#">
+                    <img src="imgs/ad_focus.jpg" alt=""/>
+                </a>
+            </div>
+            <div class="d1">
+                <span class="s1">京东快报</span>
+                <a href="#">更多快报</a>
+            </div>
+            <div class="d2">
+                <ul class="u1">
+                    <li><a href="#">松鼠好年货，二折开抢！</a></li>
+                    <li><a href="#">名酒春晚，茅台888</a></li>
+                    <li><a href="#">四国鲜花定制低至5折</a></li>
+                    <li><a href="#">家具年华大采购低至8折</a></li>
+                </ul>
+                <ul class="u2">
+                    <li><a href="#">年味十足最高199减50</a></li>
+                    <li><a href="#">MOTO X.10:30开售</a></li>
+                    <li><a href="#">京东自营，爱鲜回家</a></li>
+                    <li><a href="#">关于假骗客服诈骗的声明</a></li>
+                </ul>
+            </div>
+            <!--飞机话费-->
+            <div class="d3">
+                <table border="1px solid #fff" cellspacing="0">
+                    <tr>
+                        <td>
+                            <a>
+                            <s class="huafei"></s>
+                                <p>话费</p>
+                            </a>
+                            <i></i>
+                        </td>
+                        <td>
+                            <a>
+                                <s class="feiji"></s>
+                                <p>机票</p>
+                            </a>
+                            <i></i>
+                        </td>
+                        <td>
+                            <a>
+                                <s class="caipiao"></s>
+                                <p>彩票</p>
+                            </a>
+                            <i></i>
+                        </td>
+                        <td>
+                            <a>
+                                <s class="youxi"></s>
+                                <p>游戏</p>
+                            </a>
+                            <i></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a>
+                                <s class="lxing"></s>
+                                <p>旅行</p>
+                            </a>
+                            <i></i>
+                        </td>
+                        <td>
+                            <a>
+                                <s class="dianying"></s>
+                                <p>电影票</p>
+                            </a>
+                            <i></i>
+                        </td>
+                        <td>
+                            <a>
+                                <s class="licai"></s>
+                                <p>理财</p>
+                            </a>
+                            <i></i>
+                        </td>
+                        <td>
+                            <a>
+                                <s class="shuidian"></s>
+                                <p>水电煤</p>
+                            </a>
+                            <i></i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+</article>
+<!--主题内容-->
+<section id="mian">
+    <!--广告语-->
+        <div class="guanggao">
+            <p>生活的橱窗&nbsp;&nbsp;&nbsp;<span>每一天展示精彩!</span></p>
+        </div>
+    <!--品牌-->
+        <div class="pingpai">
+            <ul class="u_1">
+                <li class="li_1 li1">
+                    <b>
+                        <div class="aa">
+                            <h3>品牌街</h3>
+                            <h4>三星NOTE</h4>
+                            <p>赠送500京东E卡</p>
+                            <ul>
+                                <li>更多品牌</li>
+                                <li>进入品牌站</li>
+                            </ul>
+                        </div>
+                    </b>
+                </li>
+                <li class="li_1 li2">
+                    <b>
+                        <div class="aa">
+                            <h3>坚果礼盒</h3>
+                            <h4>天天低价</h4>
+                        </div>
+                    </b>
+                </li>
+                <li class="li_1 li3">
+                    <b>
+                        <div class="aa">
+                            <h3>好东西</h3>
+                            <h4>罗亚科技键盘</h4>
+                            <p>舒适建入249</p>
+                        </div>
+                    </b>
+                </li>
+                <li class="li_1 li4">
+                    <b>
+                        <div class="aa">
+                            <h3>好东西</h3>
+                            <h4>罗亚科技键盘</h4>
+                            <p>舒适建入249</p>
+                        </div>
+                    </b>
+                </li>
+                <li class="li_1 li5">
+                    <b>
+                        <div class="aa">
+                            <h3>好东西</h3>
+                            <h4>罗亚科技键盘</h4>
+                            <p>舒适建入249</p>
+                        </div>
+                    </b>
+                </li>
+                <li class="li_1 li6">
+                    <b>
+                        <div class="aa">
+                            <h3>好东西</h3>
+                            <h4>罗亚科技键盘</h4>
+                            <p>舒适建入249</p>
+                        </div>
+                    </b>
+                </li>
+                <li class="li_1 li7">
+                    <b>
+                        <div class="aa">
+                            <h3>好东西</h3>
+                            <h4>罗亚科技键盘</h4>
+                            <p>舒适建入249</p>
+                        </div>
+                    </b>
+                </li>
+                <li class="li_1 li8">
+                    <b>
+                        <div class="aa">
+                            <h3>好东西</h3>
+                            <h4>罗亚科技键盘</h4>
+                            <p>舒适建入249</p>
+                        </div>
+                    </b>
+                </li>
+
+            </ul>
+            <div class="dv">
+                <a href="#"><img src="imgs/ad_small_01.jpg" alt=""/></a>
+                <a href="#"><img src="imgs/ad_small_02.jpg" alt=""/></a>
+                <a href="#"><img src="imgs/ad_small_03.jpg" alt=""/></a>
+            </div>
+            <!--1F-->
+            <div class="F1">
+                <span>1F</span>
+                <p>家电通讯</p>
+                <ul class="wujing">
+                    <li><a href="#">特价商品</a></li>
+                    <li><a href="#">大家电</a></li>
+                    <li><a href="#">小家电</a></li>
+                    <li><a href="#">手机通讯</a></li>
+                    <li><a href="#">汽车五金</a></li>
+                </ul>
+                <ul class="heyue">
+                    <li><a href="#">合约计划说明</a></li>
+                    <li><a href="#">大家电配送</a></li>
+                </ul>
+            </div>
+            <!---左边手机-->
+            <div class="shou_ji">
+                <ul class="shou_jiul">
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <li><a href="#">手机配件</a></li>
+                    <img src="imgs/fl_01.jpg" alt="" width="150px" height="160px"/>
+                </ul>
+            </div>
+            <!--滚动区域-->
+            <div class="bof">
+                <div class="bof1">
+                    <!----左边dl-------->
+                    <dl>
+                        <dt><img src="imgs/fl_dl_01.jpg" alt=""/></dt>
+                        <dd class="dd.html"><a href="#">48英寸智能电视2499，55英寸智能电视3499</a></dd>
+                        <dd class="dd.text">送澳门风云2电影票</dd>
+                    </dl>
+                </div>
+                <!--------轮播图------->
+                <ul class="ul_tupian">
+                    <li><img src="imgs/fl_ad_01.jpg" alt=""/></li>
+                </ul>
+                <!------右边dl------->
+                <div class="bof1">
+                    <dl>
+                        <dt><img src="imgs/fl_dl_02.jpg" alt=""/></dt>
+                        <dd class="dd.html"><a href="#">mozi新品首发</a></dd>
+                        <dd class="dd.text">2月5号10点30开抢</dd>
+                    </dl>
+                </div>
+                <div class="bof1">
+                    <dl>
+                        <dt><img src="imgs/fl_dl_03.jpg" alt=""/></dt>
+                        <dd class="dd.html"><a href="#">mozi新品首发</a></dd>
+                        <dd class="dd.text">2月5号10点30开抢</dd>
+                    </dl>
+                </div>
+                <div class="bof1">
+                    <!----左边dl-------->
+                    <dl>
+                        <dt><img src="imgs/fl_dl_04.jpg" alt=""/></dt>
+                        <dd class="dd.html"><a href="#">48英寸智能电视2499，55英寸智能电视3499</a></dd>
+                        <dd class="dd.text">送澳门风云2电影票</dd>
+                    </dl>
+                </div>
+                <div class="bof1">
+                    <!----左边dl-------->
+                    <dl>
+                        <dt><img src="imgs/fl_dl_05.jpg" alt=""/></dt>
+                        <dd class="dd.html"><a href="#">48英寸智能电视2499，55英寸智能电视3499</a></dd>
+                        <dd class="dd.text">送澳门风云2电影票</dd>
+                    </dl>
+                </div>
+                <div class="bof1">
+                    <!----左边dl-------->
+                    <dl>
+                        <dt><img src="imgs/fl_dl_06.jpg" alt=""/></dt>
+                        <dd class="dd.html"><a href="#">48英寸智能电视2499，55英寸智能电视3499</a></dd>
+                        <dd class="dd.text">送澳门风云2电影票</dd>
+                    </dl>
+                </div>
+                <div class="bof1">
+                    <!----左边dl-------->
+                    <dl>
+                        <dt><img src="imgs/fl_dl_07.jpg" alt=""/></dt>
+                        <dd class="dd.html"><a href="#">48英寸智能电视2499，55英寸智能电视3499</a></dd>
+                        <dd class="dd.text">送澳门风云2电影票</dd>
+                    </dl>
+                </div>
+            </div>
+            <!-----------TCL图标区---------------------->
+            <div class="tcl">
+                <ul class="ulto1">
+                    <li><img src="imgs/kokia.jpg" alt=""/></li>
+                    <li><img src="imgs/flyco.jpg" alt=""/></li>
+                    <li><img src="imgs/sky.jpg" alt=""/></li>
+                    <li><img src="imgs/cha.jpg" alt=""/></li>
+                    <li><img src="imgs/lg.jpg" alt=""/></li>
+                </ul>
+                <ul class="ulto2">
+                    <li><img src="imgs/kokia.jpg" alt=""/></li>
+                    <li><img src="imgs/flyco.jpg" alt=""/></li>
+                    <li><img src="imgs/sky.jpg" alt=""/></li>
+                    <li><img src="imgs/cha.jpg" alt=""/></li>
+                    <li><img src="imgs/lg.jpg" alt=""/></li>
+                </ul>
+                <div class="right-img">
+                    <img src="imgs/fl_ad_02.jpg" alt=""/>
+                </div>
+            </div>
+        </div>
+        <div class="shaidan">
+            <p>热门晒单</p>
+            <ul>
+                <li><img src="imgs/share_01.jpg" alt=""/><b>晒</b></li>
+                <li><a href="#">卡哟yoyo蓝牙低音炮立体声响</a></li>
+                <li><span>音质还可以不错的，很大声，很好看</span><i></i></li>
+            </ul>
+            <p>热门晒单</p>
+            <ul>
+                <li><img src="imgs/share_01.jpg" alt=""/><b>晒</b></li>
+                <li><a href="#">卡哟yoyo蓝牙低音炮立体声响</a></li>
+                <li><span>音质还可以不错的，很大声，很好看</span><i></i></li>
+            </ul>
+        </div>
+        <div class="shaidan">
+            <p>热门晒单</p>
+            <ul>
+                <li><img src="imgs/share_02.jpg" alt=""/><b>晒</b></li>
+                <li><a href="#">卡哟yoyo蓝牙低音炮立体声响</a></li>
+                <li><span>音质还可以不错的，很大声，很好看</span><i></i></li>
+            </ul>
+            <p>热门晒单</p>
+            <ul>
+                <li><img src="imgs/share_02.jpg" alt=""/><b>晒</b></li>
+                <li><a href="#">卡哟yoyo蓝牙低音炮立体声响</a></li>
+                <li><span>音质还可以不错的，很大声，很好看</span><i></i></li>
+            </ul>
+        </div>
+        <div class="content_others">
+            <div class="dushu">
+                <p>在线读书</p>
+                <span><a href="#">更多在线读书</a></span>
+            </div>
+            <img src="imgs/reading.jpg" alt=""/>
+            <ul>
+                <li><a href="#">来地球第一天新书特惠</a></li>
+                <li><a href="#">来地球第一天新书特惠</a></li>
+                <li><a href="#">来地球第一天新书特惠</a></li>
+                <li><a href="#">来地球第一天新书特惠</a></li>
+            </ul>
+            <p>订阅促销信息</p>
+            <input type="text" class="dizhi" value="请输入你的Email地址"/>
+            <input type="button" class="btn" value="订阅"/>
+    </div>
+</section>
+<!--购物指南-->
+<div id="shopping">
+    <div class="mainbox">
+        <div class="fuwu">
+            <p class="p p1"></p>
+            <ul>
+                <li><b>配送方式</b></li>
+                <li><a href="#">上门提取</a></li>
+                <li><a href="#">211限达令</a></li>
+                <li><a href="#">配送服务查询</a></li>
+                <li><a href="#">配送收费标准</a></li>
+                <li><a href="#">海外配送</a></li>
+            </ul>
+            <p class="p p2"></p>
+            <ul>
+                <li><b>配送方式</b></li>
+                <li><a href="#">上门提取</a></li>
+                <li><a href="#">211限达令</a></li>
+                <li><a href="#">配送服务查询</a></li>
+                <li><a href="#">配送收费标准</a></li>
+                <li><a href="#">海外配送</a></li>
+            </ul>
+            <p class="p p3"></p>
+            <ul>
+                <li><b>配送方式</b></li>
+                <li><a href="#">上门提取</a></li>
+                <li><a href="#">211限达令</a></li>
+                <li><a href="#">配送服务查询</a></li>
+                <li><a href="#">配送收费标准</a></li>
+                <li><a href="#">海外配送</a></li>
+            </ul>
+            <p class="p p4"></p>
+            <ul>
+                <li><b>配送方式</b></li>
+                <li><a href="#">上门提取</a></li>
+                <li><a href="#">211限达令</a></li>
+                <li><a href="#">配送服务查询</a></li>
+                <li><a href="#">配送收费标准</a></li>
+                <li><a href="#">海外配送</a></li>
+            </ul>
+            <p class="p p5"></p>
+            <ul>
+                <li><b>配送方式</b></li>
+                <li><a href="#">上门提取</a></li>
+                <li><a href="#">211限达令</a></li>
+                <li><a href="#">配送服务查询</a></li>
+                <li><a href="#">配送收费标准</a></li>
+                <li><a href="#">海外配送</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--页面底部-->
+<footer id="footer">
+    <div class="mainbox">
+        <div class="fot">
+            <ul>
+                <li><a href="#">关于我们</a><b>|</b></li>
+                <li><a href="#">联系我们</a><b>|</b></li>
+                <li><a href="#">人才招聘</a><b>|</b></li>
+                <li><a href="#">商家入驻</a><b>|</b></li>
+                <li><a href="#">广告服务</a><b>|</b></li>
+                <li><a href="#">手机京东</a><b>|</b></li>
+                <li><a href="#">友情链接</a><b>|</b></li>
+                <li><a href="#">销售联盟</a><b>|</b></li>
+                <li><a href="#">京东社区</a><b>|</b></li>
+                <li><a href="#">京东公益</a></li>
+            </ul>
+        </div>
+        <div class="foot">
+            <ul>
+                <li><a href="#">关于我们</a><b>|</b></li>
+                <li><a href="#">联系我们</a><b>|</b></li>
+                <li><a href="#">人才招聘</a><b>|</b></li>
+                <li><a href="#">商家入驻</a><b>|</b></li>
+                <li><a href="#">广告服务</a><b>|</b></li>
+                <li><a href="#">手机京东</a><b>|</b></li>
+                <li><a href="#">友情链接</a><b>|</b></li>
+                <li><a href="#">销售联盟</a><b>|</b></li>
+                <li><a href="#">京东社区</a><b>|</b></li>
+                <li><a href="#">京东公益</a></li>
+                <li><a href="#">广告服务</a><b>|</b></li>
+                <li><a href="#">手机京东</a><b>|</b></li>
+                <li><a href="#">友情链接</a><b>|</b></li>
+                <li><a href="#">销售联盟</a><b>|</b></li>
+
+            </ul>
+            <ul>
+                <li><a href="#">关于我们</a><b>|</b></li>
+                <li><a href="#">联系我们</a><b>|</b></li>
+                <li><a href="#">人才招聘</a><b>|</b></li>
+                <li><a href="#">商家入驻</a><b>|</b></li>
+                <li><a href="#">广告服务</a><b>|</b></li>
+                <li><a href="#">手机京东</a><b>|</b></li>
+                <li><a href="#">友情链接</a><b>|</b></li>
+                <li><a href="#">销售联盟</a><b>|</b></li>
+                <li><a href="#">京东社区</a><b>|</b></li>
+                <li><a href="#">京东公益</a></li>
+                <li><a href="#">广告服务</a><b>|</b></li>
+                <li><a href="#">手机京东</a><b>|</b></li>
+                <li><a href="#">友情链接</a><b>|</b></li>
+                <li><a href="#">销售联盟</a><b>|</b></li>
+                <li><a href="#">销售联盟</a><b>|</b></li>
+            </ul>
+            <ul class="lastul">
+                <li><a href="#">手机京东</a><b>|</b></li>
+                <li><a href="#">友情链接</a><b>|</b></li>
+                <li><a href="#">销售联盟</a><b>|</b></li>
+                <li><a href="#">销售联盟</a><b>|</b></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+
+
+
+
+
+<!--jd1.css-->
+@charset "utf-8";
+*{
+    font:12px "微软雅黑",Arial;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration:none;
+    margin:0;
+}
+body{margin:0 auto}
+#top{
+    width:1211px;
+    height:32px;
+    border:1px solid #000;
+}
+#top_main{width:1211px;
+    height:90px;
+    border:1px solid #678;}
+#nav{width:1211px;
+    height:32px;
+    border:1px solid #000;}
+#banner{width:1211px;
+    height:418px;
+    border:1px solid #ccc;}
+#mian{width:1211px;
+    height:1100px;
+    border:1px solid orange;}
+#shopping{width:1211px;
+    height:184px;
+    border:1px solid red;}
+#footer{width:1211px;
+    height:180px;
+    border:1px solid blue;}
+
+a{
+    color:#666;
+}
+
+<!--jd2.css-->
+#top{background-color:#f7f7f7}
+#top img{
+    margin:10px 0 0 10px;
+}
+#top .rt{
+    position: relative;
+}
+#top .rt ul{
+    position:absolute;
+    left:460px;
+    top:-15px;
+}
+#top .rt>ul>li{
+    float:left;
+    margin-left:10px;
+}
+#top .rt ul li b{
+    margin-right:5px;
+}
+#top .rt ul .service {
+    position: relative;
+}
+#top .rt ul .service .service_items {
+    position: absolute;
+    top:25px;
+    left:10px;
+    text-align:center;
+    border:1px solid #000;
+    background-color:#fff;
+    z-index:222;
+    opacity:0
+}
+#top .rt ul .service .service_items li{
+    width:50px;
+   margin:-5px 0 15px -39px;
+}
+/********************#top-main*********************/
+#top_main img{width:270px;height:60px;float:left;margin-top:15px}
+#top_main #search_box{width:630px;height:60px;float:left;text-align:center}
+#top_main #search_box .search{width:496px;height:36px;float:left;margin-left:40px;margin-top:25px;border:3px solid #e4393c;}
+#top_main #search_box .search #text_search{width:415px;height:30px;float:left;background-color:#fff;}
+#top_main #search_box .search #btn_search{width:75px; height:30px;float:left;background-color:#e4393c;font-weight:bold;font-size:14px;color:#fff;}
+#top_main #search_box .hot_words{width:510px;height:18px; text-align:left;margin-left:40px;margin-top:65px;clear:both;color:#999}
+#top_main input{border:none}
+#top_main #search_box .hot_words span{color:#999;}
+#top_main #my_jd{width:90px;height:30px;background:url(imgs/iconlist_2.png) no-repeat -121px -25px;cursor:pointer;float:left;margin-top:30px;text-align:center;line-height:30px;margin-right:5px;border:1px solid #efefef;color:#666;}
+#top_main #my_jd b{width:0;height:0;border:5px solid transparent;border-top-color:#ccc;position:relative;top:10px;}
+#top_main #settle_up{width:132px;height:30px;border:1px solid #efefef;float:left;text-align:center;line-height:30px;color:#666;background:url(imgs/iconlist_2.png) no-repeat -118px -82px;margin-top:30px;position:relative;z-index:111}
+#top_main #settle_up  b{width:0;height:0;border:5px solid transparent;border-top-color:#ccc;position:relative;top:10px; }
+
+/******************************nav*********************/
+#nav .nav1{
+    width:208px;
+    height:38px;
+    border:1px solid #cd2a2c;
+    text-align:center;
+    float:left;
+    background-color:#cd2a2c;
+}
+#nav .nav2{
+    width:1001px;
+    height:38px;
+    border:1px solid #e64346;
+    background-color:#e64346;
+    float:left;
+
+}
+#nav .nav1 a{
+    line-height:40px;
+    font-weight:bold;
+    color:#fff;
+    font-size:14px;
+    background-color:#cd2a2c;
+}
+#nav .nav1 a:hover{
+    text-decoration:underline;
+    cursor:pointer;
+}
+#nav .nav1 b{
+    display:inline-block;
+    height:20px;
+    width:20px;
+    background:url(imgs/iconlist_2.png) no-repeat -65px 0;
+    float:right;
+    margin-top:10px;
+}
+#nav .nav2 a{
+    background-color:#e4393c;
+    color:#fff;
+    line-height:40px;
+    display:inline-block;
+    width:80px;
+    height:36px;
+    text-align:center;
+}
+#nav .nav2 a:hover{
+    background-color:#cd2a2c;
+    text-decoration:underline;
+}
+/********************banner*************************/
+#banner .cut_box{
+    position:relative;
+    width:209px;
+    height:410px;
+    background-color:#fafafa;
+    border:1px solid #cd2a2c;
+    float:left;
+    display:block;
+}
+#banner .cut_box li{
+    width:186px;
+    height:28px;
+    line-height:28px;
+    margin-left:-20px;
+}
+#banner .cut_box li h3{
+    width:176px;
+    color:#333;
+    line-height:40px;
+}
+#banner .cut_box li h3 a{
+    margin-left:10px;
+    font-size:14px;
+    color:#666;
+}
+#banner .cut_box li #sub_box{
+    position:absolute;
+    left:190px;
+    width:710px;
+    height:405px;
+    border:1px solid #ddd;
+    z-index:88;
+    display:none;
+}
+#banner .cut_box li #sub_box .close{
+    width:26px;
+    height:26px;
+    border:1px solid #ddd;
+    text-align:center;
+    line-height:26px;
+    cursor:pointer;
+    position:absolute;
+    top:-1px;
+    right:-27px;
+    color:#000;
+    background-color:#ccc;
+}
+#banner .cut_box li #sub_box .sub_box_items{line-height:28px;  }
+#banner .cut_box li #sub_box .sub_box_items div>a{
+    float:left;
+    width:55px;
+    height:22px;
+    text-align:center;
+    color:#e4393c;
+    font-weight:bold;
+}
+#banner .cut_box li #sub_box .sub_box_items div p{display:block}
+#banner .cut_box li #sub_box .sub_box_items div p a{
+    display:inline-block;
+    height:22px;
+    line-height:22px;
+    border-left:1px solid #eee;
+    clear:both;
+    margin:10px;
+}
+#banner #slider{
+    float:left;
+    width:670px;
+    height:404px;
+    border:1px solid red;
+}
+#banner #slider .slider_adv{
+    position:relative;
+    height:240px;
+}
+#banner #slider .slider_adv .pic_list{position:relative;width:670px;height:240px;overflow:hidden}
+#banner #slider .slider_adv .pic_list .pic_list_li{position:absolute;width:3500px;height:240px}
+#banner #slider .slider_adv .pic_list .pic_list_li img{width:670px;height:240px}
+#banner #slider .slider_adv .pic_list .btn1 button{position:absolute;font-size:56px;border:0;top:100px;background-color:transparent;opacity:0.8}
+#banner #slider .slider_adv .pic_list .btn2 button{position:absolute;font-size:56px;border:0;top:100px;left:610px;background-color:transparent;opacity:0.8}
+#banner #slider .slider_adv ul{
+    position:absolute;
+    left:450px;
+    bottom:10px;
+}
+#banner #slider .slider_adv ul li{
+    float:left;
+    width:22px;
+    height:22px;
+    line-height:22px;
+    text-align:center;
+    background-color:#3e3e3e;
+    border-radius:50%;
+    border-top:none;
+    margin:0 5px;
+}
+#banner #slider .slider_adv ul li a{
+    color:#fff;
+    font-weight:bold;
+}
+#banner #slider .ad>a{
+    float:left;
+    display:inline-block;
+    width:25px;
+    height:40px;
+    color:#ccc;
+    font-size:40px;
+    font-weight:bold;
+    margin-top:50px;
+    margin-left:5px;
+}
+#banner #slider .ad ul{float:left;margin-left:-22px;}
+#banner #slider .ad ul li{
+    width:190px;
+    height:151px;
+    border:1px solid #ddd;
+    border-top:0;
+    border-bottom:0;
+    float:left;
+}
+#banner #slider .ad a.a_last{
+    margin-left:10px;
+}
+#banner #kuaibao{
+    float:right;
+    height:230px;
+    width:310px;
+}
+#banner #kuaibao a img{
+    width:310px;
+    height:70px;
+}
+#banner #kuaibao .d1{
+    width:310px;
+    height:30px;
+    float:right;
+}
+#banner #kuaibao .d1 span.s1{
+    float:left;
+    font-size:14px;
+    font-weight:bold;
+    color:#666;
+    margin-top:5px;
+}
+#banner #kuaibao .d1 a{
+    float:right;
+    margin-top:8px;
+    color:#1f5ea7;
+}
+#banner #kuaibao .d2{
+    width:312px;
+    height:121px;
+    float:right;
+    border:2px solid #f2f2f2;
+    border-top-color:#666;
+}
+#banner #kuaibao .d2 .u1{
+    float:left;
+    margin-left:-30px;
+    margin-top:5px;
+
+}
+#banner #kuaibao .d2 .u2{
+    float:right;
+    margin-top:-90px;
+}
+#banner #kuaibao .d2 .u1 li{
+    margin:5px 3px;
+}
+#banner #kuaibao .d2 .u2 li{
+    margin:5px 0;
+}
+#banner #kuaibao .d2 .u2 li a:hover,#banner #kuaibao .d2 .u1 li a:hover{
+    color:red;
+    text-decoration:underline;
+}
+#banner #kuaibao .d3{
+    width:310px;
+    height:161px;
+    float:right;
+    border:1px solid #ccc;
+}
+#banner #kuaibao .d3 table{
+    width:310px;
+    height:160px;
+}
+#banner #kuaibao .d3 table tr{width:310px;height:80px}
+#banner #kuaibao .d3 table td{text-align:center;width:77px;height:80px;}
+#banner #kuaibao .d3 table s{
+    background:url(imgs/virtuals-20140606.png) no-repeat;
+    width:40px;
+    height:40px;
+    display:block;
+    margin-left:16px;
+}
+#banner #kuaibao .d3 table s.huafei{background-position:0 0;}
+#banner #kuaibao .d3 table s.feiji{background-position:0px -47px;}
+#banner #kuaibao .d3 table s.caipiao{background-position:-127px 3px;}
+#banner #kuaibao .d3 table s.youxi{background-position:-190px 0px;}
+#banner #kuaibao .d3 table s.lxing{background-position: -70px 0;}
+#banner #kuaibao .d3 table s.dianying{background-position:-65px -50px;}
+#banner #kuaibao .d3 table s.licai{background-position:-125px -50px;}
+#banner #kuaibao .d3 table s.shuidian{background-position:-190px -50px;}
+#banner #kuaibao .d3 table p{
+    margin-top:-8px;
+}
+#banner #kuaibao .d3 table i{
+    display:block;
+    width:0;
+    height:0;
+    border:5px solid transparent;
+    border-top-color:#ccc;
+    margin-top:8px;
+    margin-left:30px;
+}
+/******************************main*********************************/
+#mian .guanggao {
+    width:1211px;
+    height:21px;
+}
+#mian .guanggao p{
+    font-size:16px;
+    font-weight:bold;
+    color:#666;
+}
+#mian .guanggao p span{
+    font-size:10px;
+    font-style:italic;
+}
+#mian .pingpai .li_1{
+    width:297px;
+    height:185px;
+    border:1px solid red;
+    float:left;
+    position:relative;
+}
+#mian .pingpai .li1{ margin-left:-40px; background:url(imgs/show_01.jpg) no-repeat}
+#mian .pingpai .li2{ background:url(imgs/show_02.jpg) no-repeat}
+#mian .pingpai .li3{ background:url(imgs/show_03.jpg) no-repeat}
+#mian .pingpai .li4{ background:url(imgs/show_04.png) no-repeat}
+#mian .pingpai .li5{margin-left:-40px; background:url(imgs/show_05.jpg) no-repeat}
+#mian .pingpai .li6{ background:url(imgs/show_06.jpg) no-repeat}
+#mian .pingpai .li7{ background:url(imgs/show_07.jpg) no-repeat}
+#mian .pingpai .li8{ background:url(imgs/show_08.jpg) no-repeat}
+#mian .pingpai .li_1 b{
+    display:block;
+    width:45%;
+    height:100%;
+    background-color:rgba(255,255,255,0.8)
+}
+#mian .pingpai .li_1 b .aa{
+    position:absolute;
+    top:30px;
+    left:20px;
+}
+#mian .pingpai .li_1 b .aa h3{
+    font-size:16px;
+    font-weight:bold;
+}
+#mian .pingpai .li_1 b .aa h4{
+    font-size:14px;
+    font-weight:bold;
+    margin-top:3px;
+
+}
+#mian .pingpai .li_1 b .aa p{
+    color:#e4393c;
+}
+#mian .pingpai .li_1 b .aa ul{position:relative;
+    left:-40px;
+}
+#mian .pingpai .dv img{
+    width:396px;
+    height:70px;
+    float:left;
+}
+#mian .pingpai .F1{
+    width:1211px;
+    height:40px;
+}
+#mian .pingpai .F1 span{
+    background:url(imgs/index_iconlist_01.png) no-repeat ;
+    width:28px;
+    height:26px;
+    float:left;
+    text-align:center;
+    line-height:26px;
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+    box-sizing: content-box;
+    padding:2px 2px 6px;
+    border-bottom:2px solid #aaa;
+}
+#mian .pingpai .F1 span:hover{background:url(imgs/index_iconlist_01.png) no-repeat -40px 0}
+#mian .pingpai .F1 p{
+    float:left;
+    font-size:22px;
+    font-weight:bold;
+    border-bottom:2px solid #aaa;
+    margin-top:5px;
+    width:180px;
+    text-align:center;
+}
+#mian .pingpai .F1 ul.wujing li{
+    width:158px;
+    float:left;
+    text-align:center;
+    border-bottom:2px solid #aaa;
+    margin-top:15px;
+}
+#mian .pingpai .F1 ul.wujing li a{
+    font-size:14px;
+    font-weight:bold;
+    border-bottom:2px solid #aaa;
+}
+#mian .pingpai .F1 ul.wujing li:hover, #mian .pingpai .F1 ul.wujing a:hover{
+    color:#e4393c;
+    cursor:auto;
+    border-bottom-color:#e4393c;
+}
+#mian .pingpai .F1 ul.heyue{
+    float:right;
+    width:211px;
+    height:40px;
+    margin-top:-40px;
+    border-bottom:2px solid #aaa
+}
+#mian .pingpai .F1 ul.heyue li{
+    float:left;
+    text-align:center;
+;
+}
+#mian .pingpai .F1 ul.heyue li a{
+    display:block;
+    margin:20px 40px 0 -30px;
+    color:#005aa0;
+}
+#mian .pingpai .shou_ji{
+    width:161px;
+    height:364px;
+    float:left;
+    border-right:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+
+}
+#mian .pingpai .shou_ji .shou_jiul li{
+    width:50%;
+    float:left;
+    line-height:25px;
+    margin-top:2px;
+}
+#mian .pingpai .shou_ji .shou_jiul li a{
+    text-align:left;
+    margin-left:-20px;
+}
+
+#mian .pingpai .shou_ji .shou_jiul img{
+    margin-left:-35px;
+}
+
+#mian .pingpai .bof{
+    width:790px;
+    height:364px;
+    border:1px solid #ccc;
+    float:left;
+}
+#mian .pingpai .bof dl{
+    width: 157px;
+    height: 178px;
+    margin:0;
+    float:left;
+}
+#mian .pingpai .bof .bof1 dt{
+    width:155px;
+    height:103px;
+    text-align:center;
+    float:left;
+}
+#mian .pingpai .bof .bof1 dt img{
+    width:100px;
+    height:100px;
+}
+#mian .pingpai .bof .bof1 dl dd{
+    text-align:center;
+    margin-top:3px;
+    color:#e4393c;
+}
+#mian .pingpai .bof .ul_tupian{float:left;
+margin-left:-38px;}
+#mian .pingpai .bof .ul_tupian img{height:175px;float:left}
+#mian .pingpai .tcl ul.ulto1{
+    width:128px;
+    height:180px;
+    float:left;
+    margin-left:-35px;
+}
+#mian .pingpai .tcl ul.ulto2{
+    width:128px;
+    height:180px;
+    float:left;
+}
+#mian .pingpai .tcl .right-img img{
+    width:255px;
+    height:183px;
+}
+#mian .shaidan{
+    width:450px;
+    height:200px;
+    border:1px solid #aaa;
+    float:left;
+    margin-top:10px;
+}
+#mian .shaidan p{
+    width:450px;
+    height:33px;
+    font-size:18px  ;
+    font-weight:bold;
+    margin:5px 0 0 5px;
+}
+#mian .shaidan ul{
+    position:relative;
+    width:450px;
+    height:61px;
+    border-bottom:1px dotted #aaa;
+}
+#mian .shaidan ul li img{
+    width:60px;
+    height:50px;
+}
+#mian .shaidan ul li{float:left;  font-size:14px;}
+#mian .shaidan ul li b{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    background-color:#AA3333;
+    font-size:13px;
+    color:#fff;
+    text-align:center;
+    left:83px;
+    position:absolute;
+}
+#mian .shaidan ul li a{
+    color:#005aa0;
+    font-size:14px;
+    margin-left:15px;
+}
+#mian .shaidan ul li span{ margin-left:15px; font-size:14px;}
+#mian .shaidan ul li i{display:inline-block;width:30px;height:20px; background:url(imgs/iconlist_3.png) no-repeat 0 -80px;margin-left:15px; }
+#mian .content_others{
+    width:300px;
+    height:200px;
+    float:left;
+    border:1px solid #aaa;
+    margin-top:10px;
+}
+#mian .content_others .dushu{
+    width:300px;
+    height:32px;
+    border:1px solid #aaa;
+}
+#mian .content_others .dushu p{
+    font-size:14px;
+    font-weight:bold;
+    float:left;
+    margin-top:5px;
+}
+#mian .content_others .dushu span{
+    float:right;
+    margin-top:5px;
+}
+#mian .content_others .dushu span a{
+    color:#005aa0;
+    font-size:14px;
+}
+#mian .content_others ul{
+    float:right;
+    height:100px;
+
+
+}
+#mian .content_others ul li{
+    list-style:square;
+    width:141px;
+    height:25px;
+}
+#mian .content_others ul li a{
+    font-size:8px;
+    color:#005aa0;
+    margin-top:15px;
+}
+#mian .content_others p{
+    clear:both;
+    width:200px;
+    height:20px;
+    font-size:14px;
+    font-weight:bold;
+    margin-top:10px;
+}
+#mian .content_others input.dizhi{
+    width:210px;
+    height:30px;
+    border-top:1px solid #000;
+    border-left:1px solid #000;
+    border-right:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+    background:url(imgs/email.gif) no-repeat left center;
+    box-sizing: content-box;
+    padding-left:20px;
+}
+#mian .content_others input{border:none}
+#mian .content_others input.btn{
+    width:50px;
+    height:28px;
+    background-color:#ed0000;
+    color:#fff;
+    border-radius:5px;
+    margin-left:5px;
+}
+/*****************************shopping**********************************************/
+#shopping .fuwu .p{
+    width:40px;
+    height:40px;
+    background:url(imgs/iconlist_2.png) no-repeat;
+    float:left;
+    margin:5px 0 0 90px;
+}
+#shopping .fuwu .p2{background-position:-50px -56px;}
+#shopping .fuwu .p1{background-position:0 -56px;}
+#shopping .fuwu .p3{background-position:0 -96px;}
+#shopping .fuwu .p4{background-position:-50px -96px;}
+#shopping .fuwu .p5{background-position:0 -144px;}
+#shopping .fuwu ul{
+    float:left;
+    width:120px;
+    height:184px;
+    margin-left:-20px;
+    text-align:left;
+}
+#shopping .fuwu ul li{
+    width:100px;
+    height:20px;
+    margin:10px 0 0 -10px;
+}
+#shopping .fuwu ul li b{font-weight:bold;}
+
+/**********************footer****************************************/
+#footer .fot{
+    width:1211px;
+    height:35px;
+    border:1px solid #aaa;
+    margin-top:20px;
+}
+#footer .fot ul{ text-align:center;width:800px;height:35px;margin:0 auto;}
+#footer .fot ul li{
+    float:left;
+   margin:7px 5px 0 5px;
+}
+#footer .fot ul li b{display:inline-block;margin-left:8px;opacity:0.6;}
+#footer .foot{
+    width:1211px;
+    height:109px;
+    border:1px solid #aaa;
+}
+#footer .foot ul{width:900px; height:30px ;margin:0 auto}
+#footer .foot ul li{float:left;width:56px;height:30px;}
+#footer .foot ul.lastul{
+    margin-left:350px;
+}
+
+
+<!--jd.js实现轮播广告-->
+/**
+ * Created by Administrator on 2016/6/29.
+ */
+window.onload=function(){
+    var btn1=document.getElementById("btn1");
+    var btn2=document.getElementById("btn2");
+    var pic_list_li=document.getElementsByClassName("pic_list_li")[0];
+    var picWidth=parseInt(document.querySelector("#slider  .pic_list_li img").width);
+    var btn_list=document.querySelectorAll(" #slider .slider_adv ul li a");
+    var pic_list=document.getElementsByClassName("pic_list")[0];
+    console.log(pic_list);
+    var index=0;
+    btn_list[index].style.color="red";
+    btn2.onclick=function() {
+        index++;
+        for (var i = 0; i < btn_list.length; i++) {
+            if (index == 5) {
+                index = 0
+            }
+            pic_list_li.style.left = (-picWidth) * index + "px";
+            if(index==i){btn_list[i].style.color="red" }
+            else{btn_list[i].style.color=""}
+        }
+    };
+    btn1.onclick=function(){
+        index--;
+        if(index<0){index=4}
+        pic_list_li.style.left=(-picWidth)*index+"px";
+        for (var i = 0; i < btn_list.length; i++) {
+            if(index==i){btn_list[i].style.color="red" }
+            else{btn_list[i].style.color=""}
+        }
+    };
+    var time=setInterval(function(){btn2.onclick()},1500);
+    pic_list.onmouseover=function(){clearInterval(time)};
+    pic_list.onmouseout=function(){ time=setInterval(function(){btn2.onclick()},1500)};
+
+}
