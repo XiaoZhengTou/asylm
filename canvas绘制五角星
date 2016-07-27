@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    var canvas=document.getElementById("canvas");
+    canvas.width=1024;
+    canvas.height=576;
+    var context=canvas.getContext("2d");
+    draw(context,100,200,400,300,30);
+    function draw(cxt,r,R,x,y,rot){//x,y为圆心坐标点，r为小圆坐标点，R为大圆坐标点,rot为旋转角度
+        cxt.lineWidth=5;
+        cxt.strokeStyle="blue";
+        cxt.beginPath();
+        for(var i=0;i<5;i++){
+            cxt.lineTo(Math.cos( (18+i*72+rot)/180*Math.PI)*R+x,
+                       -Math.sin((18+i*72+rot)/180*Math.PI)*R+y );
+            cxt.lineTo(
+                    Math.cos( (54+i*72+rot)/180*Math.PI)*r+x,
+                    -Math.sin((54+i*72+rot)/180*Math.PI)*r+y
+            )
+        }
+        cxt.closePath();
+        cxt.stroke();
+
+        //绘制的2个圆
+        cxt.strokeStyle="red";
+        cxt.beginPath();
+        cxt.arc(x,y,R,0,Math.PI*2);
+        cxt.closePath();
+        cxt.stroke();
+
+        cxt.strokeStyle="orange";
+        cxt.beginPath();
+        cxt.arc(x,y,r,0,Math.PI*2);
+        cxt.closePath();
+        cxt.stroke();
+
+        //绘制圆心
+        cxt.fillStyle="red";
+        cxt.beginPath();
+        cxt.arc(x,y,5,0,Math.PI*2);
+        cxt.closePath();
+        cxt.fill();
+    }
+</script>
+</body>
+</html>
