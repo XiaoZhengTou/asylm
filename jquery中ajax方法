@@ -1,0 +1,316 @@
+jQuery中的load()方法
+<script>
+	$("#btn").click(function(){
+		/*
+		   $().load(url,data,callback)方法 - 是对象方法
+		   * url - 请求地址
+		     * 当只传递url请求地址时:
+			   * 已经成功实现了AJAX的异步请求
+			   * 在代码逻辑中,并没有接收服务器端的响应
+			   * 默认的请求类型为GET
+		   * data - (可选)请求数据,格式必须为 { key:value }
+		     * 问题:
+			   * 定义Object还是符合该格式的字符串?Object
+			   * 服务器端如何接收?
+			     * 是用$_GET还是用$_POST?$_REQUEST
+				 * 根据客户端的请求数据中的name进行接收,目前name指的是谁?Object中的key
+		   * callback - (可选)回调函数
+		     function(data){}
+			 * 问题:该函数如何能接收服务器端的响应数据?
+			 * 思考:考虑回调函数中是否具备形参
+			   * 形参的名称可以自定义
+			   * 假定该回调函数具备形参:自定义a
+			   * 经过测试,该回调函数的确具备形参
+			   * 该形参的作用:接收服务器端的响应数据
+		   * 注意 - load()方法
+		     load()方法的请求方式由是否发送请求数据决定
+			 * GET方式 - load()方法没有发送请求数据
+			 * POST方式 - load()方法的确发送请求数据
+		   * 问题 - load()方法
+		     * load()方法只能直接使用文本格式,而无法直接使用XML或JSON格式
+		 */
+		var json = {
+			name : 'zhangwuji',
+			pwd : 12345
+		}
+		$("#btn").load("01.php",json,function(data){
+			console.log(data);
+		});
+	});
+  </script>
+  
+  
+  jQuery中的get或post方法
+  <script>
+	$("#btn").click(function(){
+		/*
+		   $.get(url,data,callback,type)方法
+		   * url - 请求地址
+		   * data - 请求数据,格式必须为 key:value
+		   * callback - 回调函数,function(data){}
+		     * data形参 - 服务器端的响应数据
+		   * type - 设置返回内容的格式
+		     * _default - 默认格式
+			 * text - (默认)文本格式
+			 * xml - XML格式
+			 * json - JSON格式
+		   特点
+		   * 无论是否发送请求数据,请求类型一定是GET
+		 */
+		var json = {
+			name : 'zhangwuji',
+			pwd : 12345
+		}
+		/*
+		$.get("02.php",json,function(data){
+			console.log(data);
+		},"json");
+		*/
+		$.post("02.php",json,function(data){
+			console.log(data);
+		},"json");
+	});
+  </script>
+  
+  jQuery中的Ajax()方法
+  <script>
+	$("#btn").click(function(){
+		/*
+		   $.ajax(options)方法
+		   * options - (可选)选项
+		   * 选项
+		     * type - 请求类型,默认为GET
+			 * url - 请求地址,默认为当前页面
+			 * async - 是否异步,默认为true
+			 * data - 请求数据,格式一定是 key:value
+			 * dataType - 设置服务器端的响应数据格式
+			   * text - 文本格式
+			   * xml - XML格式
+			   * json - JSON格式
+			 * success - 请求成功后的回调函数
+			   function(data, textStatus){}
+			   * data - 服务器端的响应数据
+			   * textStatus - 成功信息
+			     * success - 表示成功
+			 * error - 请求失败后的回调函数
+			   function(XMLHttpRequest, textStatus, errorThrown){}
+			   * XMLHttpRequest - Ajax的核心对象
+			   * textStatus - 错误信息
+			     * timeout - 超时
+				 * notmodify - 未修改
+				 * error - 错误
+				 * parsererror - 解析错误
+			   * errorThrown - 错误异常信息
+		 */
+		var json = {
+			name : "zhangwuji",
+			pwd : 12345
+		}
+		$.ajax({
+			type : "post",
+			url : "03.php",
+			data : json,
+			success : function(data,textStatus){
+				console.log(data);
+				console.log(textStatus);
+			},
+			error : function(XMLHttpRequest,textStatus,errorThrown){
+				console.log(textStatus);
+			}
+		});
+	});
+  </script>
+  
+  
+  动态读取脚本
+  <script>
+	$("#btn").click(function(){
+		/*
+		   使用动态读取脚本
+		   $.getScript(url,callback)方法
+		   * url - 请求地址
+		     http://127.0.0.1:8888/jquery/05.php?_=1453271364972
+		   好处 - 安全性高,灵活性高
+		 */
+		//$.getScript("my1.js");
+		$.getScript("05.php");
+	});
+  </script>
+  
+jQuery中的getJSON()方法
+<script>
+	$("#btn").click(function(){
+		/*
+		   $.getJSON(url,data,callback)方法
+		   * 作用 - 读取JSON格式的数据
+		   * 参数
+		     * url - 请求地址
+			 * data - 请求数据
+			 * callback - 回调函数
+		 */
+		$.getJSON("data.json",function(data){
+			var html = "";
+			for(var i=0;i<data.length;i++){
+				html += "<hr>";
+				html += "<h3>留言：</h3>";
+				html += "<p>姓名："+data[i].name+"</p>";
+				html += "<p>"+data[i].talk+"</p>";
+			}
+			$("#show").html(html);
+		});
+	});
+  </script>
+  
+  表单的异步提交
+  <body>
+  <form action="07.php" method="post">
+	<input type="text" id="data" name="data">
+	<input type="button" id="btn" value="提交">
+  </form>
+  <script>
+	/*
+	   定义表单(并且submit按钮)时:可以同步提交
+	   * 阻止表单的默认提交行为
+	     * 表单提交事件 - submit事件
+		   * return false;
+		   * event.preventDefault();
+	     * 表单内不使用submit按钮
+	   * 异步提交是与表单无关:表单数据手工进行提交
+	     * 手工构建表单数据:提交到服务器端
+	   * 通过Ajax方式进行异步提交
+	 */
+	/*
+	$("form").submit(function(event){
+		//return false;
+		event.preventDefault();
+	});
+	 */
+	$("#btn").click(function(){
+		// a. 手工构建表单数据内容
+		var json = { data : $("#data").val() };
+		// b. 通过Ajax进行异步提交
+		$.post("07.php",json,function(data){
+			console.log(data);
+		});
+	});
+  </script>
+ </body>
+ 
+ 
+ 
+ 用户注册页面
+ <body>
+  <fieldset>
+	<legend>用户注册页面</legend>
+	<form action="08.php" method="post">
+		<table>
+			<tr>
+				<td>用户名:</td>
+				<td><input type="text" name="user"></td>
+			</tr>
+			<tr>
+				<td>密码:</td>
+				<td><input type="password" name="pwd"></td>
+			</tr>
+			<tr>
+				<td>确认密码:</td>
+				<td><input type="password" name="repwd"></td>
+			</tr>
+			<tr>
+				<td>地址:</td>
+				<td><input type="text" name="addr"></td>
+			</tr>
+			<tr>
+				<td>年龄:</td>
+				<td><input type="number" name="age"></td>
+			</tr>
+			<tr>
+				<td>个人主页</td>
+				<td><input type="url" name="home"></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="email" name="mail"></td>
+			</tr>
+			<tr>
+				<td>学历:</td>
+				<td><input type="text" name="edu"></td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td><input type="text" name="sex"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="注册"></td>
+			</tr>
+		</table>
+	</form>
+  </fieldset>
+  <script>
+	// 用户注册的异步提交
+	$("form").submit(function(event){
+		// 1. 阻止表单的默认提交行为
+		event.preventDefault();
+		/*
+		   2. 手工构建表单内所有数据内容
+		    * 不再关注表单内的元素数量
+			* 转而只关注表单(表单只有一个)
+			* 出现机制:通过表单自动将表单元素构建成我们需要的格式
+		 */
+		/*
+		var data = {
+			user : $("#user").val(),
+			pwd : $("#pwd").val(),
+			repwd : $("#repwd").val(),
+			addr : $("#addr").val(),
+			age : $("#age").val(),
+			home : $("#home").val(),
+			mail : $("#mail").val(),
+			edu : $("#edu").val(),
+			sex : $("#sex").val()
+		}*/
+		var data = $("form").serialize();
+		// 3. 通过Ajax异步提交
+		$.post("08.php",data,function(data){
+			console.log(data);
+		});
+	});
+  </script>
+ </body>
+ 
+ 
+ 
+ 实现跨域请求
+ <body>
+  <input type="button" id="btn" value="跨域请求">
+  <script>
+	$("#btn").click(function(){
+		/*
+		   $.getJSON(url,data,callback)
+		   * 参数
+		     * url - 请求地址
+			   * 增加请求数据: callback=?
+			     * callback - 指的就是$.getJSON()方法的回调函数
+				 * 因为$.getJSON()方法的回调函数没有名称
+				 * 使用"?"替代函数名称,$.getJSON()方法的底层自动随机的生成一个名称
+
+		jQuery111307785970428958535_1453281486849(data)
+		jQuery1113046185723622329533_1453281556555()
+
+			 * data - 请求数据
+			 * callback - 回调函数
+		 */
+		$.getJSON("10.php?callback=?",function(data){
+			console.log(data);
+		});
+	});
+/*
+	function jQuery111307785970428958535_1453281486849(data){
+		console.log(data);
+	}
+jQuery111307785970428958535_1453281486849("zhangwuji");
+jQuery111307949789168778807_1453281977018({ "name" : "zhangwuji", "pwd" : 12345 })
+*/
+  </script>
+ </body>
