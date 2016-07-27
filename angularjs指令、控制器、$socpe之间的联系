@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script src="js/min.js/angular.js"></script>
+    <script src="js/app.js/app.js"></script>
+    <script src="js/directive.js/directive.js"></script>
+    <script src="js/controller.js/controller.js"></script>
+</head>
+<body>
+    <div ng-controller="controller1">
+        <div class="container">
+            <he load="greeting()">
+                滑动加载..
+            </he>
+        </div>
+        <div ng-controller="controller2">
+            <div class="container">
+                <he load="greeting2()">
+                    滑动加载..
+                </he>
+            </div>
+    </div>
+     </div>
+<div class="row">
+    <div class="col-md-3">
+        <supermen  strength>动感超人----力量</supermen>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-3">
+            <supermen strength speed>动感超人----力量.速度</supermen>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <supermen strength speed light>动感超人----力量.速度.发光</supermen>
+        </div>
+    </div>
+<table class="table tableborder">
+    <tr class="active"><hello  ng-repeat="v in [1,2,3,4]"></hello></tr>
+
+</table>
+<div ng-controller="Myctrl">
+    <drink flavor="{{ctrlFlavor}}"></drink>
+</div>
+<div ng-controller="Myctrl2">
+    <hao ng-repeat="x in [1,2,3,4,5]" greeting="sayhello(name)"></hao>
+</div>
+</body>
+</html>
+
+
+<!--app.js-->
+/**
+ * Created by Administrator on 2016/7/14.
+ */
+var myApp=angular.module("myApp",[]);
+
+
+<!--directive.js-->
+/**
+ * Created by Administrator on 2016/7/14.
+ */
+myApp.directive("he",function(){
+    return{
+        restrict:"AE",
+       template:"<button class='btn btn-success'>我是指令创建出来的</button><div ng-transclude></div>",
+       transclude:true,
+        link:function(scope,element,attr){
+            element.bind("mouseenter",function(){
+               // scope.greeting()
+              //scope.$apply("greeting()")
+                scope.$apply(attr.load)
+            })
+            }
+        }
+}).directive("supermen",function(){
+    return{
+        restrict:"AE",
+        scope:{},//创建独立的scope
+        controller:function($scope){
+            $scope.abilites=[];
+            this.addStrength=function(){
+                $scope.abilites.push("Strength")
+            };
+            this.addSpeed=function(){
+                $scope.abilites.push("Speed")
+            };
+            this.addLight=function(){
+                $scope.abilites.push("Light")
+            }
+        },
+        link:function(scope,element,attr){
+            element.bind("mouseenter",function(){
+                console.log(scope.abilites)
+            });
+            element.addClass("btn btn-primary")
+        }
+    }
+}).directive("strength",function(){
+    return{
+        require:'^supermen',
+        link:function(scope,attr,ele,supermenCtrl){
+            supermenCtrl.addStrength()
+        }
+    }
+}).directive("speed",function(){
+    return{
+        require:"^supermen",
+        link:function(scope,element,arrt,supermenCtrl){
+            supermenCtrl.addSpeed()
+        }
+    }
+}).directive("light",function(){
+    return{
+        require:"^supermen",
+        link:function(scope,ele,attr,supermenCtrl){
+            supermenCtrl.addLight()
+        }
+    }
+}).directive("hello",function(){
+    return{
+        scope:{},
+        restrict:"AE",
+        template:"<input type='text' ng-model='test'/><span>{{test}}</span><br/>"
+    }
+}).directive("drink",function(){
+    return{
+        restrict:"AE",
+        template:"<div>{{flavor}}</div>",
+        scope:{
+            flavor:"@"
+        }
+        //link:function(scope,ele,attr){
+           // scope.flavor=attr.flavor
+       // }
+    }
+}).directive("hao",function(){
+    return{
+        scope:{
+          greeting:'&'
+        },
+        restrict:"AE",
+        template:"<input type='text' ng-model='usename'>" +
+        "<button class='btn btn-info' ng-click='greeting({name:usename})'>按钮</button><br/>"
+    }
+})
+
+<!--controller.js-->
+/**
+ * Created by Administrator on 2016/7/14.
+ */
+myApp.controller("controller1",['$scope',function($scope){
+    $scope.greeting=function(){
+        console.log("数据加载中...")
+    }
+}]).controller("controller2",['$scope',function($scope){
+    $scope.greeting2=function(){
+        console.log("数据加载2...")
+    }
+}]).controller("Myctrl",['$scope',function($scope){
+    $scope.ctrlFlavor="第三段"
+}]).controller("Myctrl2",['$scope',function($scope){
+    $scope.sayhello=function(name){
+        alert("hello"+name)
+    }
+}])
