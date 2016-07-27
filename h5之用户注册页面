@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>用户注册</title>
+</head>
+<body>
+<fieldset>
+    <legend>用户注册</legend>
+    <form>
+    <table>
+        <tr>
+            <td>用户名:</td>
+            <td><input id="user" type="text" required pattern="^[a-zA-Z]{6,8}$"></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input id="pwd" type="password" required></td>
+        </tr>
+        <tr>
+            <td>年龄:</td>
+            <td><input id="age" type="number" min="18" required></td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input  id="mail" type="email" required></td>
+        </tr>
+        <tr>
+            <td>个人主页:</td>
+            <td><input id="url" type="url" required></td>
+        </tr>
+        <tr>
+            <td>出生日期:</td>
+            <td><input type="date" required></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="注册"></td>
+        </tr>
+    </table>
+    </form>
+</fieldset>
+</body>
+<script>
+    var  user=document.getElementById("user");
+    user.onblur=function(){
+        if(this.validity.valueMissing){
+         this.setCustomValidity("用户名不能为空")
+        }else if(this.validity.patternMismatch){
+            this.setCustomValidity("用户名必须为6-8位字母")
+        }else if(this.validity.customError){
+            this.setCustomValidity("")
+        }
+    };
+    var pwd = document.getElementById("pwd");
+    pwd.onblur = function(){
+        if(pwd.validity.valueMissing){
+            pwd.setCustomValidity("密码不能为空.");
+        }else if(pwd.validity.patternMismatch){
+            pwd.setCustomValidity("密码必须为6至8之间的数字.");
+        }else if(pwd.validity.customError){
+            pwd.setCustomValidity("");
+        }
+    };
+    var age = document.getElementById("age");
+    age.onblur = function(){
+        if(age.validity.valueMissing){
+            age.setCustomValidity("年龄不能为空.");
+        }else if(age.validity.rangeUnderflow){
+            age.setCustomValidity("年龄过小.");
+        }else if(age.validity.customError){
+            age.setCustomValidity("");
+        }
+    };
+    var mail = document.getElementById("mail");
+    mail.onblur = function(){
+        if(mail.validity.valueMissing){
+            mail.setCustomValidity("Email不能为空.");
+        }else if(mail.validity.typeMismatch){
+            mail.setCustomValidity("Email的格式有误.");
+        }else if(mail.validity.customError){
+            mail.setCustomValidity("");
+        }
+    };
+    var url = document.getElementById("url");
+    url.onblur = function(){
+        if(url.validity.valueMissing){
+            url.setCustomValidity("url不能为空.");
+        }else if(url.validity.typeMismatch){
+            url.setCustomValidity("url的格式有误.");
+        }else if(url.validity.customError){
+            url.setCustomValidity("");
+        }
+    };
+    var birth = document.getElementById("birth");
+    birth.onblur = function(){
+        if(birth.validity.valueMissing){
+            birth.setCustomValidity("请选择你的出生日期.");
+        }else if(birth.validity.customError){
+            birth.setCustomValidity("");
+        }
+    }
+</script>
+</html>
