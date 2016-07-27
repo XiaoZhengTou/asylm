@@ -1,0 +1,8 @@
+//创建一个js文件
+var  http = require('http');
+http.createServer(function(reg,res){
+    res.writeHead(200,{"Content-type":"text/plain"});
+    res.write("your.html")
+    res.end()
+}).listen(8090);
+console.log("Server runing at http://127.0.01:8090")
