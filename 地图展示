@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>地图展示</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		body, html,#allmap {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin:0;
+			font-family:"微软雅黑";
+		}
+	</style>
+	<!-- 
+		1. 引入百度地图的JS文件
+		* 在线文件(可以联网状态下)
+		* 地址
+		  http://api.map.baidu.com/api?v=2.0&ak=您的密钥
+	-->
+	<script src="http://api.map.baidu.com/api?v=2.0&ak=HbUVYMUg6PwbOnXkztdgSQlQ"></script>
+	
+</head>
+<body>
+	<!-- 2. 定义用于显示百度地图的容器元素 -->
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	/*
+	   3. 创建一个百度地图的Map对象
+	    new BMap.Map(元素的ID)
+	 */
+	var map = new BMap.Map("allmap");
+	/*
+	   4. 设置百度地图显示的中心和级别
+	    centerAndZoom(center,zoom)
+		* center - (String类型),设置地图显示的中心
+		* zoom - 设置地图显示的级别(3 - 19)
+	 */
+	map.centerAndZoom("北京", 11);
+	
+</script>
