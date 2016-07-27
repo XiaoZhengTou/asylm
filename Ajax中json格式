@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>AJAX中的JSON格式</title>
+  <script src="mytools.js"></script>
+ </head>
+ <body>
+  <input type="button" id="btn" value="AJAX中的JSON">
+  <script>
+	var btn = document.getElementById("btn");
+	btn.onclick = function(){
+		var xhr = getXhr();
+		xhr.open("post","08.php");
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+		/*
+		   客户端如何构建JSON格式的数据内容
+		   * (错误)通过JavaScript定义Object或Array之一
+		   * (正确)构建符合JSON格式的字符串
+		     * 构建字符串外层使用单引号
+			 * 构建字符串内部使用双引号
+		 */
+		var user = '{"name":"zhangwuji","pwd":12345}';
+		xhr.send("user="+user);
+
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				// 接收的数据类型为字符串
+				var data = xhr.responseText;
+				/*
+				   将数据转换为JSON格式
+				   eval()函数 - 进行转换时
+				   * 不使用"()",eval()函数当做空的语句块
+				   * 使用"()",eval()函数强制进行转换
+				 */
+				var json = eval("("+data+")");
+				console.log(json);
+			}
+		}
+	}
+  </script>
+ </body>
+</html>
