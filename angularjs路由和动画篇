@@ -1,0 +1,108 @@
+<!doctype html>
+<html ng-app="BookStore">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script src="angular.js"></script>
+    <script src="angular-animate.js"></script>
+
+    <style>
+        body{
+            background-color:#FFF
+        }
+        .page{
+            position:relative;
+            top:400px;
+            left:300px;
+            width:660px;
+            height:100px;
+        }
+        .hello{
+            color:red;
+            background:#00D0BC;
+        }
+        .list{color:blue;
+        background-color:#E59400}
+@keyframes animateEnter{
+    0%{
+        transform:rotateX(0deg)
+    }
+    50%{
+        transform:translateX(50px) rotateX(180deg)
+    }
+    100%{transform:rotateX(360deg)}
+}
+        @keyframes animateEnter2{
+            0%{
+                transform:rotateX(0deg)
+            }
+            50%{
+                transform:translateY(50px) rotateY(180deg)
+            }
+            100%{transform:rotateZ(360deg)}
+        }
+
+        @keyframes animateLeave{
+            0%{
+                transform:rotateY(0deg)
+            }
+            50%{
+                transform:translateX(-50px) rotateY(180deg)
+            }
+            100%{transform:rotateY(360deg)}
+        }
+ .hello.ng-enter{
+    animation:animateEnter 0.3s linear
+ }
+ .hello.ng-move{
+     animation:animateLeave 0.3s linear
+ }
+ .list.ng-enter{
+     animation:animateEnter2 0.3s linear
+ }
+
+    </style>
+</head>
+
+<script src="angular-route.js"></script>
+<script src="app.js"></script>
+<script src="controller.js"></script>
+<body>
+<div class="page {{pageClass}}" ng-view></div>
+</body>
+</html>
+
+
+<!--app.js-->
+/**
+ * Created by Administrator on 2016/7/13.
+ */
+angular.module("BookStore",['ngRoute','Book','ngAnimate']).config(function($routeProvider){
+    $routeProvider.when('/hello',{
+        templateUrl:"demo.html",
+        controller:"helloList"
+    }).when("/list",{
+        templateUrl:'demo2.html',
+        controller:"hellolist2"
+    })
+})
+
+
+<!--controller.js-->
+/**
+ * Created by Administrator on 2016/7/13.
+ */
+angular.module("Book",[]).controller("helloList",['$scope',function($scope){
+    $scope.greeting={
+        text:"helloxuzhen"
+    };
+    $scope.pageClass="hello"
+}]).controller("hellolist2",['$scope',function($scope){
+    $scope.data=[
+        {name:"zhangsan",age:20},
+        {name:'lisi',age:21},
+        {name:'wangwu',age:22},
+        {name:'zhaoliu',age:23}
+    ];
+    $scope.pageClass="list"
+}])
