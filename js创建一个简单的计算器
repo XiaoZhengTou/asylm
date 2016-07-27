@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>js创建一个简单的计算器</title>
+    <script>
+        function calc() {
+            //获得window事件
+            var e = window.event || arguments[0];
+            //IE8             DOM
+            //获取目标对象    IE8           DOM
+            var target = e.srcElement || e.target;
+            if (target.nodeName == "BUTTON") {
+                var sc = document.getElementById("sc");
+                if (target.innerHTML == "C") {
+                    sc.innerHTML = ""
+                }
+                else if (target.innerHTML == "=") {
+                    try{
+                        sc.innerHTML = eval(sc.innerHTML)
+                    }
+                    catch(err){
+                        sc.innerHTML=err.message
+                    }
+                } else {
+                    sc.innerHTML = sc.innerHTML + target.innerHTML
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="" onclick="calc()">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <br/>
+    <button>C</button>
+    <button>+</button>
+    <button>-</button>
+    <button>=</button>
+</div>
+<textarea id="sc" style="width:200px;height:50px;resize:none;" readonly></textarea>
+</body>
+</html>
