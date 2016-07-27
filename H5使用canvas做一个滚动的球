@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>H5使用canvas做一个滚动的球</title>
+</head>
+<body>
+<canvas id="canvas" style="border:1px solid #aaa"></canvas>
+<script>
+    var ball={x:520,y:100,r:20,g:3,vx:-4,vy:-10,color:"#005588"};//g为重力加速度；vx为x轴方向的速度正为向右负为向左；y为y轴方式的速度正为向下，负为向上
+    var canvas=document.getElementById("canvas");
+    canvas.width=1024;
+    canvas.height=568;
+    var context=canvas.getContext("2d");
+    setInterval(
+            function(){
+                render(context),
+                 updata()
+            },
+            30
+    );
+    function updata(){
+        ball.x+=ball.vx;
+        ball.y+=ball.vy;
+        ball.vy+=ball.g;
+        if(ball.y>=canvas.height-ball.r){//如果小球的高度等于等于画布的高度减去小球的半径
+            ball.y=canvas.height-ball.r;//让小球和地面接触
+            ball.vy=-ball.vy*0.8//y的速度方向变为负的 0.8为摩擦系数
+        }
+    }
+    function render(context){
+        context.clearRect(0,0,context.canvas.width,context.canvas.height)//指找到当前画布的宽高
+        context.fillStyle=ball.color;
+        context.beginPath();
+        context.arc(ball.x,ball.y,ball.r,0,2*Math.PI);
+        context.closePath();
+        context.fill();
+    }
+</script>
+</body>
+</html>
