@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <style>
+        #mycontainer{border:1px solid #000}
+        #mylist{
+            position: relative;
+            width:100px;
+            top:50px;
+            left:100px;
+            float:left
+        }
+        .img_list{
+            height:445px;
+            overflow: hidden;
+        }
+        .big_img{
+           float:left;
+            position: relative;
+            left:100px;
+            top:100px;
+            border:1px solid #000
+        }
+        .big_img img{width:400px;height:400px}
+        .next-img{
+            position: relative;
+            width:200px;
+            height:200px;
+           overflow: hidden;
+            top:100px;
+            left:50px;
+            display: none;
+        }
+        .next-img img{display:inline-block;position: absolute;}
+        .favor{
+            position: absolute;
+            width:138px;
+            height:138px;
+            opacity: 0.5;
+            cursor: move;
+            background: #ccc;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="mycontainer">
+    <ul class="list-group" id="mylist">
+        <li class="list-group-item"><a href="#"><img src="imgs/images/gotop.gif" alt=""/></a></li>
+        <div class="img_list">
+        <li class="list-group-item"><a href="#"><img src="imgs/images/img01s.jpg" alt=""/></a></li>
+        <li class="list-group-item"><a href="#"><img src="imgs/images/img02s.jpg" alt=""/></a></li>
+        <li class="list-group-item"><a href="#"><img src="imgs/images/img03s.jpg" alt=""/></a></li>
+        <li class="list-group-item"><a href="#"><img src="imgs/images/img01s.jpg" alt=""/></a></li>
+        <li class="list-group-item"><a href="#"><img src="imgs/images/img02s.jpg" alt=""/></a></li>
+        <li class="list-group-item"><a href="#"><img src="imgs/images/img03s.jpg" alt=""/></a></li>
+        <li class="list-group-item"><a href="#"><img src="imgs/images/img01s.jpg" alt=""/></a></li>
+        <li class="list-group-item"><a href="#"><img src="imgs/images/img02s.jpg" alt=""/></a></li>
+         </div>
+        <li class="list-group-item"><a href="#"><img src="imgs/images/gobottom.gif" alt=""/></a></li>
+    </ul>
+    <div class="big_img">
+        <div class="favor"></div>
+        <a href=""><img src="imgs/images/img01.jpg" alt=""/></a>
+    </div>
+    <div class="next-img">
+        <img src="imgs/images/img01.jpg" alt=""/>
+    </div>
+</div>
+<script>
+    var container=document.getElementById("mycontainer");
+    var big_img=document.getElementsByClassName("big_img")[0];
+    var favor=document.getElementsByClassName("favor")[0];
+    var next_img=document.getElementsByClassName("next-img")[0] ;
+    var one=next_img.getElementsByTagName("img")[0];
+    big_img.onmouseover=function(){favor.style.display="block";next_img.style.display="block" }
+    big_img.onmouseout=function(){favor.style.display="none";next_img.style.display="none" }
+    big_img.onmousemove=function(ev){
+        var event=ev;
+        var left=event.clientX-big_img.offsetLeft-favor.offsetWidth/2;
+        console.log(left)
+        var top=event.clientY-big_img.offsetTop-favor.offsetHeight/2;
+        if(left<0){left=0}else if(left>(big_img.offsetWidth-favor.offsetWidth)){left=big_img.offsetWidth-favor.offsetWidth}
+        if(top<0){top=0}else if(top>(big_img.offsetHeight-favor.offsetHeight)){top=big_img.offsetHeight-favor.offsetHeight}
+        favor.style.left=left+"px";
+        favor.style.top=top+"px";
+        var next_left=left/(big_img.offsetWidth-favor.offsetWidth)*(one.offsetWidth-next_img.offsetWidth);
+        var next_top=top/(big_img.offsetHeight-favor.offsetHeight)*(one.offsetHeight-next_img.offsetHeight);
+        one.style.left=-next_left+"px";
+        one.style.top=-next_top+"px"
+    }
+</script>
+</body>
+</html>
