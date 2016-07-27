@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <style>
+        #d1{
+            width:100px;
+            height:100px;
+            border:2px solid orange;
+            text-align:center;
+            background-color:gold;
+        }
+        #d2{
+            width:60px;
+            height:60px;
+            border:2px solid blue;
+            margin-left:20px;
+            margin-top:20px;
+            background-color:blueviolet;
+        }
+        #d3{
+            width:20px;
+            height:20px;
+            border:2px solid black;
+            margin-left:20px;
+            margin-top:20px;
+            background-color:green;
+        }
+        #d1,#d2,#d3{
+            cursor:pointer
+        }
+    </style>
+    <script>
+        function fighLight(){
+            var e=window.event||arguments[0];
+           this.style.backgroundColor="red";
+            alert("this is"+this.id);
+            this.style.backgroundColor="";
+            //假设没有冒泡排序
+            if(e.stopPropagation){
+                //console.log(typeof(e.stopPropagation));
+                e.stopPropagation()
+            }else{
+                //假设如果有冒泡事件
+                e.cancelBubble=true
+            }
+        }
+        window.onload=function(){
+            var div=document.getElementsByTagName("div");
+           /** for(var i= 0,len=div.length;i<len;i++){
+                div[i].onclick=fighLight}
+            ****/
+            div[0].addEventListener("click",fighLight,false);
+            div[1].addEventListener("click",fighLight,false);
+            div[2].addEventListener("click",fighLight ,false);
+        }
+    </script>
+</head>
+<body>
+        <div id="d1">
+            <div id="d2">
+                <div id="d3"></div>
+            </div>
+        </div>
+</body>
+</html>
