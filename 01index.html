@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="BookStore">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/min.js/angular.js"></script>
+</head>
+<body>
+ <div ng-controller="bookcontroller">
+     <select>
+         <option  ng-repeat="x in ['get','post','json']">{{x}}</option>
+     </select>
+     <input type="text" ng-model="url" size="80"/>
+     <button id="fetchbtn" ng-click="fetch()">fetch</button><br/>
+     <button id="samplebtn" ng-click="updataModel('post','tpls模块区域/package.json')">SamplePOST</button><br/>
+     <button id="samplejsonbtn" ng-click="updataModel('post','tpls模块区域/package.json')">
+         sampel json
+     </button>
+     <button id="invalidjsonpbtn" ng-click="updataModel('post','tpls模块区域/package.json')">
+         Invalid Jsonp
+     </button>
+     <pre>http status code:{{status}}</pre>
+     <pre>http response data:{{response}}</pre>
+ </div>
+ <script>
+     var http=angular.module("BookStore",[]);
+     http.controller("bookcontroller",function($scope,$http,$templateCache){
+         $scope.method="post";
+         $scope.url="tpls模块区域/package.json";
+         $scope.fetch=function(){
+             $http({
+                 method:$scope.method,
+                 url:$scope.url,
+                  data:{name:'张三',age:20}
+             }).success(function(response,status){
+                 $scope.response=response;
+                 $scope.status=status
+             }).error(function(response,status){
+                 $scope.response=response||"request failed";
+                 $scope.status=status
+             })
+         };
+         $scope.updataModel=function(method,url){
+             $scope.method=method;
+             $scope.url=url
+         }
+     })
+ </script>
+</body>
+</html>
