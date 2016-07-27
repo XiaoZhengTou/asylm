@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>有效状态</title>
+</head>
+<body>
+    <form>
+        用户名：<input id="user" type="text" required/><br/>
+        密码：  <input id="pwd" type="password" pattern="^[0-9a-zA-Z]{6,8}$"/><br/>
+        Email:  <input id="email" type="email" /><br/>
+        年龄：  <input  id="age" type="number" step="1" min="18"/><br/>
+        <input type="submit" value="提交"/>
+    </form>
+</body>
+<script>
+    var user=document.getElementById("user");
+    user.onblur=function(){
+        if(this.validity.valid){
+            alert("验证通过")
+        }else if(this.validity.valueMissing){
+            alert("用户名不能为空")
+        }
+    };
+    var pwd=document.getElementById("pwd");
+    pwd.onblur=function(){
+        if(pwd.validity.valid){
+            alert("验证通过")
+        }
+        else if(pwd.validity.patternMismatch){
+            alert("密码输入错误")
+        }
+    };
+    var emai=document.getElementById("email")
+    emai.onblue=function(){
+        if(this.validity.valid){
+            alert("验证通过")
+        }else if(this.validity.typeMismatch){
+            alert("邮箱格式错误")
+        }
+    }
+    var age=document.getElementById("age");
+    age.onblur=function(){
+        if(this.validity.valid){
+            alert("验证通过")
+        }else if(this.validity.rangeUnderflow){
+            alert("年龄太小")
+        }else if(this.validity.typeMismatch){
+            alert("年龄输入错误")
+        }
+    }
+</script>
+</html>
