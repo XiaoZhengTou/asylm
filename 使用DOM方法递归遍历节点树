@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>使用DOM方法递归遍历节点树</title>
+</head>
+<body>
+    <span><a href="#">hellow</a></span>
+    <ul>
+        <li>跑男</li>
+        <li>爸爸去哪了</li>
+        <li>酷跑
+            <ul>
+                <li>天天向上</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        function ob(node){
+           document.write((node.nodeType!=3?node.nodeName:node.nodeValue)+"<br/>");
+            var children=node.children;
+           for(var i=0,len=children.length;i<len;i++){
+               ob(children[i])
+           }
+        }
+        ob(document.body)
+    </script>
+</body>
+</html>
