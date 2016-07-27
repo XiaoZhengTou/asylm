@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8"/>
+	<script>
+	
+	</script>
+	<style>
+		div{
+			width:300px;
+			height:300px;
+			border:1px solid black;
+		}
+		img{
+			width:200px;
+			height:200px;
+		}
+		#d2{
+			float:right;
+		}
+	</style>
+</head>
+	<body>
+		<div id="d1">
+			<img src="Penguins.jpg" id="img"/>
+		</div>
+		<div id="d2"></div>
+		<script>
+			//一：当拖动源元素向右移动到目标元素时
+			//因为移动过后获取到新的img里面没有id属性，所以此时清除div中的id属性是没有作用的
+			//，应该换一种方式获取源元素，以及目标元素
+			//①，通过原生dom中的元素树方式获取 id属性为d1中div的元素
+			var d1=document.getElementById("d1");
+			var d2=document.getElementById("d2");
+			//②通过元素树获取的d1中第一个元素
+			var child1=d1.firstElementChild;
+			
+			if(child1){
+				child1.ondragstart=start1;
+				d2.ondragover=over1;
+				d2.ondrop=drop1;
+			}
+			//分别写出从左拖动到右边的三个函数
+			function start1(event){
+				event.dataTransfer.setData("text",child1.src);	
+			};
+			function over1(event){
+				event.preventDefault();	
+			};
+			function drop1(event){
+				var src=event.dataTransfer.getData("text");
+				d2.innerHTML="<img src='"+src+"' width='200' >";
+				child2=d2.firstElementChild;
+				child1.dragstart=start2;
+				d1.ondragover=over2;
+				d1.ondrop=drop2;
+				d1.removeChild(child1);
+			};
+			//二：当拖动源元素向左移动到目标元素时
+			var child2=d2.firstElementChild;
+			function start2(){
+				event.dataTransfer.setData("text",child1.src);
+			};
+			function over2(){
+				event.preventDefault();
+			};
+			function drop2(){
+				var src=event.dataTransfer.getData("text");
+				d1.innerHTML="<img src='"+src+"' width='200'>";
+				child1=d1.firstElementChild;
+				child1.ondragstart=start1;
+				d2.ondragover=over1;
+				d2.ondrop=drop1;
+				d2.removeChild(child2);
+			};
+		</script>
+	</body>
+</html>
