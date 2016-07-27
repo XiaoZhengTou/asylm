@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script src="js/angular.js"></script>
+    <script src="js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+<h2>在表格中显示数据</h2>
+<h3>ng-repeat可以完美的显示表格</h3>
+<div ng-app="myapp" ng-controller="table">
+  <div class="table-responsive">
+      <table class="table table-border table-condensed table-hover">
+          <tr class="danger">
+              <th>序号</th>
+              <th>姓名</th>
+              <th>城市</th>
+              <th>国家</th>
+          </tr>
+          <tr id="tr_show" ng-repeat="x in records|orderBy:'City'" class="info" ng-show="true"><!--orderBy表示按字母顺序排序-->
+              <td>{{$index+1}}</td><!--显示序号-->
+              <td>{{x.Name}}</td>
+              <td>{{x.City}}</td>
+              <td>{{x.Country|uppercase}}</td><!--uppercase表示全部变为大写-->
+          </tr>
+      </table>
+  </div>
+</div>
+<button class="btn btn-success">点击加载信息</button>
+<script>
+    var mymodule=angular.module("myapp",[]);
+    mymodule.controller("table",function($scope,$http){
+        $http.get("package.json").success(function(response){
+            $scope.records=response.records
+        });
+    })
+$("button").click(function(){
+    alert("xxx")
+   $("#tr_show").show=false
+})
+</script>
+</body>
+</html>
