@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto;"></canvas>
+<script src="digit.js"></script>
+<script src="countdown.js"></script>
+</body>
+</html>
+
+<!--digit.js-->
+/**
+ * Created by Administrator on 2016/6/26.
+ */
+var digit=[
+    [
+        [0,0,1,1,1,0,0],
+        [0,1,1,0,1,1,0],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [0,1,1,0,1,1,0],
+        [0,0,1,1,1,0,0]
+    ],//数字0
+    [
+        [0,0,0,1,1,0,0],
+        [0,1,1,1,1,0,0],
+        [0,0,0,1,1,0,0],
+        [0,0,0,1,1,0,0],
+        [0,0,0,1,1,0,0],
+        [0,0,0,1,1,0,0],
+        [0,0,0,1,1,0,0],
+        [0,0,0,1,1,0,0],
+        [0,0,0,1,1,0,0],
+        [1,1,1,1,1,1,1]
+    ],//数字1
+    [
+        [0,1,1,1,1,1,0],
+        [1,1,0,0,0,1,1],
+        [0,0,0,0,0,1,1],
+        [0,0,0,0,1,1,0],
+        [0,0,0,1,1,0,0],
+        [0,0,1,1,0,0,0],
+        [0,1,1,0,0,0,0],
+        [1,1,0,0,0,0,0],
+        [1,1,0,0,0,1,1],
+        [1,1,1,1,1,1,1]
+    ],//数字2
+    [
+        [1,1,1,1,1,1,1],
+        [0,0,0,0,0,1,1],
+        [0,0,0,0,1,1,0],
+        [0,0,0,1,1,0,0],
+        [0,0,1,1,1,0,0],
+        [0,0,0,1,1,0,0],
+        [0,0,0,0,1,1,0],
+        [0,0,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [0,1,1,1,1,1,0]
+    ],//数字3
+    [
+        [0,0,0,0,1,1,0],
+        [0,0,0,1,1,1,0],
+        [0,0,1,1,1,1,0],
+        [0,1,1,0,1,1,0],
+        [1,1,0,0,1,1,0],
+        [1,1,1,1,1,1,1],
+        [0,0,0,0,1,1,0],
+        [0,0,0,0,1,1,0],
+        [0,0,0,0,1,1,0],
+        [0,0,0,0,1,1,0]
+    ],//数字4
+    [
+        [1,1,1,1,1,1,1],
+        [1,1,0,0,0,0,0],
+        [1,1,0,0,0,0,0],
+        [1,1,1,1,1,1,0],
+        [1,1,0,0,1,1,0],
+        [0,0,0,0,0,1,1],
+        [0,0,0,0,0,1,1],
+        [0,0,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [0,1,1,1,1,1,0]
+    ],//数字5
+    [
+        [0,0,0,0,1,1,0],
+        [0,0,1,1,0,0,0],
+        [0,1,1,0,0,0,0],
+        [1,1,0,0,0,0,0],
+        [1,1,0,1,1,1,0],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [0,1,1,1,1,1,0]
+    ],//数字6
+    [
+        [1,1,1,1,1,1,1],
+        [1,1,0,0,0,1,1],
+        [0,0,0,0,1,1,0],
+        [0,0,0,0,1,1,0],
+        [0,0,0,1,1,0,0],
+        [0,0,0,1,1,0,0],
+        [0,0,1,1,0,0,0],
+        [0,0,1,1,0,0,0],
+        [0,0,1,1,0,0,0],
+        [0,0,1,1,0,0,0],
+    ],//数字7
+    [
+        [0,1,1,1,1,1,0],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [0,1,1,1,1,1,0],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [0,1,1,1,1,1,0]
+    ],//数字8
+    [
+        [0,1,1,1,1,1,0],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [1,1,0,0,0,1,1],
+        [0,1,1,1,0,1,1],
+        [0,0,0,0,0,1,1],
+        [0,0,0,0,0,1,1],
+        [0,0,0,0,1,1,0],
+        [0,0,0,1,1,0,0],
+        [0,1,1,0,0,0,0]
+    ],//数字9
+    [
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,1,1,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,1,1,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        [0,0,0,0],
+    ]
+
+
+];
+
+
+<!--countdown.js-->
+/**
+ * Created by Administrator on 2016/6/26.
+ */
+var window_width=1024;//画布的宽
+var window_height=668;//画布的高
+var Radius=8;//设置圆的半径
+var marginTop=60;//数字离画布的上边距
+var marginLeft=30;//数字离画布的左边距
+const endTime=new Date(2016,5,28,10,30,30);//抢购时间为2016年6月28日10点钟；
+var curShouTimeSeconds=0;//用来计算时间差
+var balls=[];//用来装生成的小球；
+const colors=["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"]
+window.onload=function(){
+    var canvas=document.getElementById("canvas");
+    canvas.width=window_width ;
+    canvas.height=window_height ;
+    var context=canvas.getContext("2d");
+    curShouTimeSeconds=getShouTimeSeconds();//第三步
+   // render(context);把他改写成setInterval
+    setInterval(//第五步 设置定时器
+        function(){
+            render(context);
+            updata()
+        },
+        50
+    )
+};
+function updata(){//第六步 获得现在的时间来赋值给原来的时间
+    var nextShouTimeSeconds=getShouTimeSeconds();//获取时间
+    var nexthour=parseInt(nextShouTimeSeconds/3600) ;//现在的小时
+    var nextminutes=parseInt((nextShouTimeSeconds-nexthour*3600)/60);//现在的分钟
+    var nextseconds=nextShouTimeSeconds%60;//现在的秒数
+
+    var hour=parseInt(curShouTimeSeconds/3600) ;//原来的小时
+    var minutes=parseInt((curShouTimeSeconds-hour*3600)/60);//原来的分钟
+    var seconds=curShouTimeSeconds%60;//原来的秒钟
+    if(nextseconds!=seconds){//判断现在的秒数和原来的秒数是否相等
+        //第七步；
+        if(parseInt(nexthour/10)!=parseInt(hour/10)){//如果时钟十位上的数不等于当前的时钟十位上的数
+                   addballs(marginLeft,marginTop,parseInt(hour/10))
+        }
+        if(parseInt(nexthour%10)!=parseInt(hour%10)){//如果时钟个位上的数不等于当前的时钟个位上的数
+            addballs(marginLeft+15*(Radius+1),marginTop,parseInt(hour%10))
+        }
+        if(parseInt(nextminutes/10)!=parseInt(minutes/10)){//如果分钟个位上的数不等于当前的时钟十位上的数
+            addballs(marginLeft+39*(Radius+1),marginTop,parseInt(minutes/10))
+        }
+        if(parseInt(nextminutes%10)!=parseInt(minutes%10)){//如果分钟个位上的数不等于当前的时钟个位上的数
+            addballs(marginLeft+54*(Radius+1),marginTop,parseInt(minutes%10))
+        }
+        if(parseInt(nextseconds/10)!=parseInt(seconds/10)){//如果秒钟时位上的数不等于当前的时钟十位上的数
+            addballs(marginLeft+78*(Radius+1),marginTop,parseInt(seconds/10))
+        }
+        if(parseInt(nextseconds%10)!=parseInt(seconds%10)){//如果秒钟个位上的数不等于当前的时钟个位上的数
+            addballs(marginLeft+93*(Radius+1),marginTop,parseInt(seconds%10))
+        }
+
+
+        curShouTimeSeconds=nextShouTimeSeconds;//原来的时间就等于现在的时间数
+    }
+    //第九步
+    updataballs();
+}
+function updataballs(){//第十步
+    for(var i=0;i<balls.length;i++){
+        balls[i].x+=balls[i].vx;
+        balls[i].y+=balls[i].vy;
+        balls[i].vy+=balls[i].g;
+        //碰撞检测
+        if(balls[i].y>=canvas.height-Radius){
+            balls[i].y=canvas.height-Radius;
+            balls[i].vy=-balls[i].vy*0.75
+
+        }
+    }
+}
+function addballs(x,y,num){//第八步
+    for(var i=0;i<digit[num].length;i++){
+        for(var j=0;j<digit[num][i].length;j++){
+            if(digit[num][i][j]==1){
+                var aball={
+                    x:x+j*2*(Radius+1)+(Radius+1),
+                    y:y+i*2*(Radius+1)+(Radius+1),
+                    g:1.5+Math.random(),
+                    vx:Math.pow(-1,Math.ceil(Math.random()*1000))*4,
+                    vy:-5,
+                    color:colors[Math.floor(Math.random()*colors.length)]
+                }
+                balls.push(aball);
+            }
+        }
+    }
+}
+function getShouTimeSeconds(){//第四步，获得抢购的毫秒数
+    var curTime=new Date();//获取现在的时间
+    var ret=endTime.getTime()-curTime.getTime();//获取时间差 显示的是毫秒数
+    ret=Math.round(ret/1000);//将毫秒数转换成秒数
+    return ret>=0?ret:0;//返回值 如果大于等于0就返回本身，否则返回0
+}
+function render(cxt){//第二步
+    cxt.clearRect(0,0,window_width,window_height)//在画布内清除重复的画  //第7步 清除
+    var hour=parseInt(curShouTimeSeconds/3600) ;//秒分解得到小时
+    var minutes=parseInt((curShouTimeSeconds -hour*3600)/60);//秒分解得到分钟
+    var seconds=curShouTimeSeconds%60;//秒分解得到秒
+    renderDigit(marginLeft,marginTop,parseInt(hour/10),cxt);//绘制小时的十位
+    renderDigit(marginLeft+15*(Radius+1),marginTop,parseInt(hour%10),cxt);//绘制小时的个位
+    renderDigit(marginLeft+30*(Radius+1),marginTop,10,cxt);//绘制冒号
+    renderDigit(marginLeft+39*(Radius+1),marginTop,parseInt(minutes/10),cxt);//绘制分钟的十位
+    renderDigit(marginLeft+54*(Radius+1),marginTop,parseInt(minutes%10),cxt);//绘制分钟的个位
+    renderDigit(marginLeft+69*(Radius+1),marginTop,10,cxt);//绘制冒号
+    renderDigit(marginLeft+78*(Radius+1),marginTop,parseInt(seconds/10),cxt);//绘制秒钟的十位
+    renderDigit(marginLeft+93*(Radius+1),marginTop,parseInt(seconds%10),cxt);//绘制秒钟的个位
+
+    //第十一步 绘制小球
+    for(var i=0;i<balls.length;i++){
+        cxt.fillStyle=balls[i].color;
+        cxt.beginPath();
+        cxt.arc(balls[i].x,balls[i].y,Radius,0,2*Math.PI)
+        cxt.closePath();
+        cxt.fill()
+    }
+}
+function renderDigit(x,y,num,cxt){//第一步分解数组画图，x表示一个小格子的宽，y表示高，num为分解时，分，秒所对应的数字，cxt指context
+    cxt.fillStyle="rgb(0,102,153)";//设置圆的填充色
+    for(var i=0 ;i<digit[num].length;i++){//数组得到对应的数字
+        for(var j=0;j<digit[num][i].length;j++){//遍历数字中的数字得到0或者1
+            if(digit[num][i][j]==1){//如果当前数组数字等于1
+                cxt.beginPath();//开始画圆
+                cxt.arc(x+j*2*(Radius+1)+(Radius +1),y+i*2*(Radius+1)+(Radius+1),Radius,0,2*Math.PI);//逗号分开的5个参数分别是坐标X，坐标Y圆的半径和0到2Math.PI
+                cxt.closePath();//绘制结束
+                cxt.fill();//填充颜色
+            }
+        }
+    }
+}
