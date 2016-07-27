@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width"/>
+    <script src="node_modules/zepto/dist/zepto.min.js"></script>
+    <script src="node_modules/zepto/src/touch.js"></script>
+    <style>
+        body{
+            margin:0;
+            padding:0
+        }
+        .pic{
+           display:-webkit-flex;
+            justify-content:center;
+            align-items: center;
+
+        }
+        .p{
+            width:100px;
+            height:100px;
+            background-color: pink;
+        }
+        .parent{
+            display:-webkit-flex;
+            width:400px;
+            -webkit-flex-wrap:nowrap;
+        }
+        .s1{
+            width:100px;
+            height:200px;
+            background-color:red;
+        }
+        .s2{
+            width:200px;
+            height:200px;
+            background-color:blue;
+        }
+        .s3{
+            width:300px;
+            height:200px;
+            background-color:green;
+        }
+        .delete { display: none; }
+    </style>
+</head>
+<body>
+<div class="pic">
+  <div class="p"></div>
+</div>
+<div class="parent">
+    <div class="s1"></div>
+    <div class="s2"></div>
+    <div class="s3"></div>
+</div>
+<ul id=items>
+    <li>List item 1 <span class="delete">DELETE</span></li>
+    <li>List item 2 <span class="delete">DELETE</span></li>
+</ul>
+<script>
+    $('#items li').swipe(function(){
+        $('.delete').hide();
+        $('.delete', this).show()
+    })
+
+    // delete row on tapping delete button
+    $('.delete').tap(function(){
+        $(this).parent('li').remove()
+    })
+</script>
+</body>
+</html>
