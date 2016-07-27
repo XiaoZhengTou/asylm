@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8"/>
+	<script>
+	
+	</script>
+</head>
+	<body>
+		<h1>简单的web记事本</h1>
+		<textarea id="data"></textarea><br/>
+		<input type="hidden" id="hide">
+		<input type="button" value="新增" id="add"/>
+		<input type="button" value="保存" id="save"/>
+		<input type="button" value="读取" id="read"/>
+		<input type="button" value="修改" id="update"/>
+		<input type="button" value="删除" id="delete"/>
+		<input type="button" value="清空" id="clear"/><br/>
+		<div id="show"></div>
+	</body>
+	<script>
+		/*
+			需求：
+			*新增-将textarea的值清空，表示新建
+			*保存-生成的key值，保存在localStorage中
+			*读取-
+			*修改-
+			*删除-
+			*清空-
+		*/
+		//①新增按钮事件
+		var data=document.getElementById("data");
+		var add=document.getElementById("add");
+		add.onclick=addData;
+		function addData(){
+			//将textarea元素的值清空
+			data.value="";
+			//提示
+			alert("已新建记事本");
+		};
+		//②保存按钮事件
+		var num=0;
+		var save=document.getElementById("save");
+		save.onclick=function(){
+			//a生成KEY值,进行判断
+			var key=hide.value;
+			if(!key){
+				//key=new Date().getTime();
+				key=num;
+				num++;
+			}
+			//b获取id为data属性元素的内容,保存在变量value中
+			var value=data.value;
+			//c将数据保存到localStorage中
+			window.localStorage.setItem(num,value);
+			//给出提示保存成功
+			addData();
+		}
+		//③读取按钮事件
+		var read=document.getElementById("read");
+		var show=document.getElementById("show");
+		read.onclick=addRead;
+		function addRead(){
+			// a. 获取localStorage中存储数据的个数
+			var count=window.localStorage.length;
+			if(count==0){
+				return alert("信息为空，不能读取");
+			}
+			// 进行HTML代码拼串
+			var html="<table border='1'><tr><td></td><td>key</td><td>value</td></tr>";
+			// b. 进行遍历
+			for(var i=0;i<count;i++){
+				var key=localStorage.key(i);
+				console.log(key);
+				var value=localStorage.getItem(key);
+				console.log(value);
+				html+="<tr><td><input type='radio' name='datas' value='"+key+"'/></td><td>"+key+"</td><td>"+value+"</td></tr>";
+			}
+			html+="</table>";
+			show.innerHTML=html;
+				
+		}
+		//④修改按钮事件
+		//找到页面中的元素修改按钮
+		var update=document.getElementById("update");
+		//找到页面中属性为hide的input，保存在变量hide当中
+		var hide=document.getElementById("hide");
+		update.onclick=function(){
+			//获取鼠标所选中的单选框
+			var radios=document.getElementsByName("datas");
+			//遍历获得的每一单选框
+			for(var i=0;i<radios.length;i++){
+				var radio=radios[i];
+				console.log(radio);
+			//判断是否选中
+				if(radio.checked){
+					var key=radio.value;
+					break;
+				}
+			}
+			//根据key获得value
+			var value=localStorage.getItem(key);
+			// d. 将VALUE写入textarea元素中
+			data.value=value;
+			// e. 将KEY值写入到hidden元素中
+			hide.value=key;
+		}
+		//⑤删除按钮事件
+		var dele=document.getElementById("delete");
+		dele.onclick=function(){
+			// 把选择的那条数据,进行删除
+			// a. 获取所有的单选框
+			var radios=document.getElementsByName("datas");
+			// b. 遍历所有单选框
+				for(var i=0;i<radios.length;i++){
+					// 获取每个单选框
+					var radio=radios[i];
+					// 判断是否被选中
+					if(radio.checked){
+					// 得到对应的KEY值
+
+						//var key=localStorage.getItem(radio.value);
+						// 进行删除
+						localStorage.removeItem(radio.value);
+						// 重新获取单选框
+						var radios=document.getElementsByName("datas");
+						//如果找到退出循环
+						break;
+					}
+				}
+					// c. 给出提示
+					alert("确定要删除？");
+					// d. 重新读取
+					addRead();
+					// 判断当前是否为最后一条
+					if(radios.length==0){
+						show.innerHTML="";
+					}
+		}
+		//⑥清空按钮事件
+		var clear=document.getElementById("clear");
+		clear.onclick=function(){
+			localStorage.clear();
+			alert("确定要删除所有吗");
+			show.innerHTML="";
+		}
+	</script>
+</html>
