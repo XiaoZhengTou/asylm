@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>C 语言实例100题</title>
+    <link rel="stylesheet/less" href="1.less"  >
+</head>
+<style>
+    span{
+        font-size:16px;
+        color:red;
+    }
+</style>
+<body>
+    <p>
+        <span>【程序 1 】</span>
+        题目：有 1 、 2 、 3 、 4 个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？
+        1. 程序分析：可填在百位、十位、个位的数字都是 1 、 2 、 3 、 4 。组成所有的排列后再去掉不满足条件的排列。
+        2. 程序源代码
+    </p>
+    <div>
+        <h3>
+            var arr=[];<br/>
+            for(var x=1;x<5;x++){<br/>
+                for(var y=1;y<5;y++){<br/>
+                    for(var z=1;z<5;z++){<br/>
+                        if(x!=y&&y!=z&&x!=z){<br/>
+                            arr=""+x+y+z<br/>
+                            document.write(arr)<br/>
+                        }
+                    }
+                }
+            }
+            document.write("一共有"+arr.length+"个不重复的数")
+        </h3>
+    </div>
+    <script>
+        var arr=[];
+        for(var x=1;x<5;x++){
+            for(var y=1;y<5;y++){
+                for(var z=1;z<5;z++){
+                    if(x!=y&&y!=z&&x!=z){
+                         arr=""+x+y+z+"&nbsp;";
+                        document.write(arr)
+                    }
+                }
+            }
+        }
+        document.write("一共有"+arr.length+"个不重复的数")
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 2 】</span>
+        题目：企业发放的奖金根据利润提成。利润 (I) 低于或等于 10 万元时，奖金可提 10% ；利润高于 10 万元，低于 20 万元时，
+        低于 10 万元的部分按 10% 提成，高于 10 万元的部分，可可提成 7.5% ； 20 万到 40 万之间时，高于 20 万元的部分，可提成 5% ；
+        40 万到 60 万之间时高于 40 万元的部分，可提成 3% ； 60 万到 100 万之间时，高于 60 万元的部分，可提成 1.5% ，高于 100 万元时，
+        超过 100 万元的部分按 1% 提成，从键盘输入当月利润 I ，求应发放奖金总数？
+        1. 程序分析：请利用数轴来分界，定位。注意定义时需把奖金定义成长整型。　　　　　　
+        <div id="d1">2. 程序源代码:</div>
+        <h3>
+            var i=prompt("请输入当如月利润");<br/>
+            var t1=100000*0.1;//10000<br/>
+            var t2=t1+100000*0.75;//85000<br/>
+            var t4=t2+200000*0.5;//180000<br/>
+            var t6=t4+200000*0.3;//240000<br/>
+            var t10=t6+400000*0.15;//300000<br/>
+            var t;//发放金额<br/>
+            if(i<=100000){t=i*0.1}<br/>
+            else if(i<=200000){t=t1+(i-100000)*0.075}<br/>
+            else if(i<=400000){t=t2+(i-200000)*0.05}<br/>
+            else if(i<=600000){t=t4+(i-400000)*0.03}<br/>
+            else if(i<=1000000){t=t6+(i-600000)*0.015}<br/>
+            else{t=t10+(i-1000000)*0.01}<br/>
+            if(i){alert(t)}<br/>
+        </h3>
+    <script>
+            document.getElementById("d1").onclick=function(i){ i=prompt("请输入当如月利润");}
+            var i=prompt("请输入当如月利润");
+            var t1=100000*0.1;//10000
+            var t2=t1+100000*0.75;//85000
+            var t4=t2+200000*0.5;//180000
+            var t6=t4+200000*0.3;//240000
+            var t10=t6+400000*0.15;//300000
+            var t;//发放金额
+            if(i<=100000){t=i*0.1}
+            else if(i<=200000){t=t1+(i-100000)*0.075}
+            else if(i<=400000){t=t2+(i-200000)*0.05}
+            else if(i<=600000){t=t4+(i-400000)*0.03}
+            else if(i<=1000000){t=t6+(i-600000)*0.015}
+            else{t=t10+(i-1000000)*0.01}
+            if(i){alert("应发放奖金总数为"+t)}
+            document.write("<hr/>")
+        </script>
+    </p>
+    <p>
+        <span>【程序 3 】</span>
+        题目：一个整数，它加上 100 后是一个完全平方数，再加上 168 又是一个完全平方数，请问该数是多少？
+        1. 程序分析：在 10 万以内判断，先将该数加上 100 后再开方，
+            再将该数加上 268 后再开方，如果开方后的结果满足如下条件，即是结果。请看具体分析：
+        2. 程序源代码：
+        <h3>for(var i=1;i<100000;i++){<br/>
+        var x=Math.sqrt(i+100);<br/>
+        var y=Math.sqrt(i+268);<br/>
+        if(x*x==i+100&&y*y==i+268){<br/>
+        document.write(i+"&nbsp;")<br/>
+        }
+        }
+        </h3>
+    </p>
+    <script>
+        for(var i=1;i<100000;i++){
+            var x=Math.sqrt(i+100);
+            var y=Math.sqrt(i+268);
+            if(x*x==i+100&&y*y==i+268){
+                document.write(i+"&nbsp;")
+            }
+        }
+        document.write("<hr>")
+    </script>
+    <p>
+        <span>【程序 4 】</span>
+        题目：输入某年某月某日，判断这一天是这一年的第几天？
+        1. 程序分析：以 3 月 5 日为例，应该先把前两个月的加起来，
+        然后再加上 5 天即本年的第几天，特殊情况，闰年且输入月份大于 3 时需考虑多加一天。
+        2. 程序源代码：
+    </p>
+    <script>
+        var day,month,year,sum,leap;
+        var ob=prompt("请输入年月日","");
+        var reg=/^\d{4}-\d{2}-\d{2}$/;
+
+       if(reg.test(ob)){alert("true")}else{alert("false")}
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 5 】</span>
+
+        题目：输入三个整数 x,y,z ，请把这三个数由小到大输出。
+
+        1. 程序分析：我们想办法把最小的数放到 x 上，先将 x 与 y 进行比较，如果 x>y 则将 x 与 y 的值进行交换，　　
+        　　然后再用 x 与 z 进行比较，如果 x>z 则将 x 与 z 的值进行交换，这样能使 x 最小。
+        2. 程序源代码：
+        <h3>var x, y, z,t;<br/>
+        var num=prompt("请输入三位数字","123");<br/>
+        var reg=/^\d{3}$/;<br/>
+        if(reg.test(num)){<br/>
+        num.split(/\s/);<br/>
+        console.log(num.length);<br/>
+        x=num[0];y=num[1];z=num[2];<br/>
+        if(x>y){t=x;x=y;y=t};X和Y互换位置<br/>
+        if(x>z){t=z;z=x;x=t};x和z互换位置<br/>
+        if(y>z){t=y;y=z;z=t}y和z互换位置<br/>
+        alert(x+y+z)<br/>
+        }else{alert("false")}<br/>
+    </h3>
+    </p>
+    <script>
+        var x, y, z,t;
+        var num=prompt("请输入三位数字","123");
+        var reg=/^\d{3}$/;
+        if(reg.test(num)){
+            num.split(/\s/);
+            console.log(num.length);
+            x=num[0];
+            y=num[1];
+            z=num[2];
+            console.log(x);
+            if(x>y){t=x;x=y;y=t}
+            if(x>z){t=z;z=x;x=t}
+            if(y>z){t=y;y=z;z=t}
+            alert(x+y+z)
+        }else{alert("false")}
+        document.write("<hr/>")
+
+    </script>
+    
+    
+     <p>
+        <span>【程序 6 】</span>
+
+        题目：用 * 号输出字母 C 的图案。
+
+        1. 程序分析：可先用 '*' 号在纸上写出字母 C ，再分行输出。
+
+        2. 程序源代码：
+    </p>
+    <script>
+       document.write("****"+"<br/>");
+       document.write("*"+"<br/>");
+       document.write("*"+"<br/>");
+       document.write("****"+"<br/>")
+       document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 8 】</span>
+
+        题目：输出 9*9 口诀。
+
+        1. 程序分析：分行与列考虑，共 9 行 9 列， i 控制行， j 控制列。
+
+        2. 程序源代码：
+        <h3>for(var i=1; i<=9;i++){<br/>
+        for(var j=1,count="";j<=i;j++){<br/>
+        count=count+j+"X"+i+"="+i*j+" "<br/>
+        }
+        document.write(count+"br/>")
+        }</h3>
+    </p>
+    <script>
+        for(var i=1; i<=9;i++){
+            for(var j=1,count="";j<=i;j++){
+            count+=j+"X"+i+"="+i*j+" "
+            }
+            document.write(count+"<br/>")
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 9 】</span>
+        题目：要求输出国际象棋棋盘。
+
+        1. 程序分析：用 i 控制行， j 来控制列，根据 i+j 的和的变化来控制输出黑方格，还是白方格。
+
+        2. 程序源代码：
+        <h3> for(var i=1;i<10;i++){<br/>
+        for(var j= 1;j<10;j++){<br/>
+        if((i+j)%2==0){<br/>
+        document.write("□")<br/>
+        }else{document.write("■")}<br/>
+        }
+        document.write("br>")
+        }</h3>
+    </p>
+    <script>
+        for(var i=1;i<10;i++){
+            for(var j= 1;j<10;j++){
+                if((i+j)%2==0){
+                    document.write("□")
+                }else{
+                    document.write("■")
+                }
+            }
+            document.write("<br/>")
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 10 】</span>
+
+        题目：打印楼梯，同时在楼梯上方打印两个笑脸。
+
+        1. 程序分析：用 i 控制行， j 来控制列， j 根据 i 的变化来控制输出黑方格的个数。
+
+        2. 程序源代码：
+    </p>
+    <script>
+        for(var i=1; i<=9;i++){
+            for(var j=1,count="";j<=i;j++){
+                if((i*j)%2==0){
+                    document.write("☺☺")
+                }else{document.write("☹☹")}
+            }
+            document.write("<br/>")
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+       <span>【程序 11 】</span>
+
+        题目：古典问题：有一对兔子，从出生后第 3 个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？
+
+        1. 程序分析：　兔子的规律为数列 1,1,2,3,5,8,13,21....
+
+        2. 程序源代码：
+        <h3> var f,f1,f2;<br/>
+        f1=1;f2=1;<br/>
+        document.write("第一个月的兔子总数为1");<br/>
+        document.write("第二个月的兔子总数为1");<br/>
+        for(var i=3;i<13;i++){<br/>
+        f=f2;<br/>
+        f2=f1+f2;//前2个月兔子数相加等于下一个月的兔子<br/>
+        f1=f;<br/>
+        document.write("第"+i+"个月的兔子总数为"+f2+"br/>")<br/>
+        }</h3>
+    </p>
+    <script>
+        var f,f1,f2;
+        f1=1;f2=1;
+        document.write("第一个月的兔子总数为1");
+        document.write("第二个月的兔子总数为1");
+        for(var i=3;i<13;i++){
+            f=f2;
+            f2=f1+f2;//前2个月兔子数相加等于下一个月的兔子
+            f1=f;
+            document.write("第"+i+"个月的兔子总数为"+f2+"<br/>")
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 12 】</span>
+
+        题目：判断 101-200 之间有多少个素数，并输出所有素数。
+
+        1. 程序分析：判断素数的方法：用一个数分别去除 2 到 sqrt( 这个数 ) ，如果能被整除，　　　　　　则表明此数不是素数，反之是素数。
+
+        2. 程序源代码：
+
+    </p>
+    <h3> var  count = 0;<br/>
+        for(var i=101; i<200; i+=2) {<br/>
+        var b = false;<br/>
+        for(var j=2; j<=Math.sqrt(i); j++){<br/>
+        if(i % j == 0) { b = false; break; }<br/>
+        else            { b = true; }<br/>
+        }<br/>
+        if(b == true) {count ++;document.write(i+" ")}<br/>
+        }<br/>
+        document.write( "素数个数是: " + count)</h3>
+    <script>
+        var  count = 0;
+        for(var i=101; i<200; i+=2) {
+            var b = false;
+            for(var j=2; j<=Math.sqrt(i); j++)
+            {
+                if(i % j == 0) { b = false; break; }
+                else            { b = true; }
+            }
+            if(b == true) {count ++;document.write(i+" ")}
+        }
+        document.write( "素数个数是: " + count+"<hr/>")
+    </script>
+    <p>
+        <span>【程序 13 】</span>
+
+        题目：打印出所有的“水仙花数”，所谓“水仙花数”是指一个三位数，其各位数字立方和等于该数本身。例如： 153 是一个“水仙花数”，因为 153=1 的三次方＋ 5 的三次方＋ 3 的三次方。
+
+        1. 程序分析：利用 for 循环控制 100-999 个数，每个数分解出个位，十位，百位。
+
+        2. 程序源代码：
+        <h3> for (var i = 100; i < 1000; i++) {<br/>
+        var a = i / 100;<br/>
+        var b = i / 10 % 10;<br/>
+        var c = i % 10;<br/>
+        if (Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3) == i){<br/>
+        document.write("水仙花数 : " +i);}<br/>
+        }</h3>
+
+    </p>
+    <script>
+        for (var i = 100; i < 1000; i++) {
+            var a = i / 100;
+            var b = i / 10 % 10;
+            var c = i % 10;
+            if (Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3) == i){
+                document.write("水仙花数 : " +i);}
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 14 】</span>
+        题目：将一个正整数分解质因数。例如：输入 90, 打印出 90=2*3*3*5 。
+        程序分析：对 n 进行分解质因数，应先找到一个最小的质数 k ，然后按下述步骤完成：
+        (1) 如果这个质数恰等于 n ，则说明分解质因数的过程已经结束，打印出即可。
+        (2) 如果 n<>k ，但 n 能被 k 整除，则应打印出 k 的值，并用 n 除以 k 的商 , 作为新的正整数你 n, 重复执行第一步。
+        (3) 如果 n 不能被 k 整除，则用 k+1 作为 k 的值 , 重复执行第一步。
+        2. 程序源代码：
+        分解质因数：<input type="text"/><input type="button" onclick="ob()" value="测试"/>
+        <h3>
+        function ob(){<br/>
+            var n=document.getElementsByTagName("input")[0].value;<br/>
+            for (var i = 2; i <= n; i++){<br/>
+                 while (n != i) {<br/>
+                 if (n % i == 0) {alert(i);n = n / i}<br/>
+                 else {break;}<br/>
+                 }
+            }
+        alert(n)<br/>
+        }</h3>
+    </p>
+    <script>
+        function ob() {
+            var n=document.getElementsByTagName("input")[0].value;
+            for (var i = 2; i <= n; i++) {
+                while (n != i) {
+                    if (n % i == 0) {
+                     alert(i);
+                        n = n / i
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
+           alert(n)
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 15 】</span>
+
+        题目：利用条件运算符的嵌套来完成此题：学习成绩 >=90 分的同学用 A 表示， 60-89 分之间的用 B 表示， 60 分以下的用 C 表示。
+        1. 程序分析： (a>b)?a:b 这是条件运算符的基本例子。
+        2. 程序源代码：
+        请输入成绩：<input type="text" class="input1"/><input type="button" value="点击" onclick="ot()"/>
+    </p>
+    <h3>function ot(){<br/>
+        var grade=document.getElementsByClassName("input1")[0].value;<br/>
+        grade>=90?alert("A"):(grade<60?alert("C"):alert("B"))<br/>
+        }</h3>
+    <script>
+        function ot(){
+            var grade=document.getElementsByClassName("input1")[0].value;
+            grade>=90?alert("A"):(grade<60?alert("C"):alert("B"))
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 16 】</span>
+        题目：输入两个正整数 m 和 n ，求其最大公约数和最小公倍数。<br/>
+        第一个正整数:<input type="text">
+        第二个正整数：<input type="text"/><input class="btn1" type="button" value="最大公约数"/><input class="btn2" type="button" value="最小公倍数"/><br/>
+        1. 程序分析：利用辗除法。
+        2. 程序源代码：
+    </p>
+   <script>
+        var a, b,num1,num2,temp;
+        num1=document.getElementsByTagName("input")[0].value;
+        num2=document.getElementsByTagName("input")[1].value;
+       /*** if(num1==true){
+            temp=num1;
+            num1=num2;
+            num2=temp;
+        }
+        a=num1;b=num2;
+        while(b!=0){temp=a%b;a=b;b=temp}
+       document.getElementsByClassName("btn1").onclick=function(){alert(a)};
+        document.getElementsByClassName("btn2").onclick=function(){alert(num1*num2/a)}****/
+    </script>
+    <p>
+        <span>【程序 17 】</span>
+        题目：输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数。
+        1. 程序分析：利用 while 语句 , 条件为输入的字符不为 '\n'.
+        2. 程序源代码：
+        <textarea rows="3" cols="30"></textarea><input type="button" class="btn5" value="点击" onclick="tongji()"/>
+    </p>
+    <script>
+        function tongji(){
+            var btn=document.getElementsByTagName("textarea")[0].value;
+            var letters= 0,space= 0,digit= 0,others=0;
+                 for(var i=0;i<btn.length;i++){
+                     var n=btn.charAt(i);
+                if(n>="a"&&n<="z"||n>="A"&&n<="Z"){letters++}
+                else if(n==""){space++}
+                else if(n>="0"&&n<="9"){digit++}
+                else{others++}
+            }
+            alert("字母的个数"+letters+"空格的个数"+space+"数字的个数"+digit+"其他符号"+others)
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 18 】</span>
+        题目：求 s=a+aa+aaa+aaaa+aa...a 的值，其中 a 是一个数字。例如 2+22+222+2222+22222( 此时共有 5 个数相加 ) ，几个数相加有键盘控制。
+        1. 程序分析：关键是计算出每一项的值。
+        2. 程序源代码：
+    </p>
+    <script>
+    </script>
+    <p>
+        <span>【程序 19 】</span>
+        题目：一个数如果恰好等于它的因子之和，这个数就称为“完数”。例如 6=1 ＋ 2 ＋ 3. 编程　　　找出 1000 以内的所有完数。
+        1. 程序分析：请参照程序 <-- 上页程序 14.
+        2. 程序源代码：
+    </p>
+    <script>
+    </script>
+    <p>
+        <span>【程序 20 】</span>
+        题目：一球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第 10 次落地时，共经过多少米？第 10 次反弹多高？
+        1. 程序分析：见下面注释
+        2. 程序源代码：
+        <h3> var sn=100;hn=100/2;<br/>
+        for(var i=2;i<=10;i++){<br/>
+        sn=sn+hn*2;<br/>
+        hn=hn/2<br/>
+        }<br/>
+        document.write("第十次落地时共经过"+sn+"米"+"第十次反弹"+hn+"米")</h3>
+    </p>
+    <script>
+        var sn=100;hn=100/2;
+        for(var i=2;i<=10;i++){
+            sn=sn+hn*2;
+            hn=hn/2
+        }
+        document.write("第十次落地时共经过"+sn+"米"+"第十次反弹"+hn+"米"+"<hr/>")
+    </script>
+    <p>
+       <span>【程序 21 】</span>
+        题目：猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不瘾，又多吃了一个，第二天早上又将剩下的桃子吃掉一半，又多吃了一个。以后每天早上都吃了前一天剩下的一半零一个。到第 10 天早上想再吃时，见只剩下一个桃子了。求第一天共摘了多少。
+
+        1. 程序分析：采取逆向思维的方法，从后往前推断。
+
+        2. 程序源代码：
+        <h3> var day=9,d1,d2=1;<br/>
+        while(day>0){<br/>
+        d1=(d2+1)*2<br/>
+        d2=d1;<br/>
+        day--<br/>
+        }
+        document.write("总共有"+d1+"个苹果")</h3>
+    </p>
+    <script>
+        var day=9,d1,d2=1;
+        while(day>0){
+            d1=(d2+1)*2
+            d2=d1;
+            day--
+        }
+        document.write("总共有"+d1+"个苹果"+"<hr/>")
+    </script>
+    <p>
+        
+     
+      <p>
+        <span>【程序 22 】</span>
+
+        题目：两个乒乓球队进行比赛，各出三人。甲队为 a,b,c 三人，乙队为 x,y,z 三人。已抽签决定比赛名单。有人向队员打听比赛的名单。
+        a 说他不和 x 比， c 说他不和 x,z 比，请编程序找出三队赛手的名单。
+        1. 程序分析：判断素数的方法：用一个数分别去除 2 到 sqrt( 这个数 ) ，如果能被整除，　　　　　　则表明此数不是素数，反之是素数。
+        2. 程序源代码：
+        <h3>
+        var i,j,k;//i为a的对手；j为b的对手；k为c的对手<br/>
+        for(i="x".charCodeAt();i<="z".charCodeAt();i++){<br/>
+        for(j="x".charCodeAt();j<="z".charCodeAt();j++){<br/>
+        if(i!=j){<br/>
+        for(k="x".charCodeAt();k<="z".charCodeAt();k++){<br/>
+        if(i!=k&&j!=k){<br/>
+        if(i!="x".charCodeAt()&&k!="x".charCodeAt()&&k!="z".charCodeAt()){<br/>
+        console.log(i)
+        console.log(j)
+        console.log(k)
+        document.write("a的对手为z,b的对手为x,c的对手为y")</h3>
+    </p>
+    <script>
+        var i,j,k;//i为a的对手；j为b的对手；k为c的对手
+        for(i="x".charCodeAt();i<="z".charCodeAt();i++){
+           for(j="x".charCodeAt();j<="z".charCodeAt();j++){
+               if(i!=j){
+                   for(k="x".charCodeAt();k<="z".charCodeAt();k++){
+                       if(i!=k&&j!=k){
+                           if(i!="x".charCodeAt()&&k!="x".charCodeAt()&&k!="z".charCodeAt()){
+
+                               console.log(i)
+                               console.log(j)
+                               console.log(k)
+                               document.write("a的对手为z,b的对手为x,c的对手为y")
+                           }
+                       }
+                   }
+               }
+           }
+        }
+        document.write("<br/>")
+    </script>
+    <p>
+        <span>【程序 23 】</span>
+
+        题目：打印出如下图案（菱形）<br/>
+        *<br/>
+        <br/>
+        ***<br/>
+        <br/>
+        ******<br/>
+        <br/>
+        ********<br/>
+        <br/>
+        ******<br/>
+        <br/>
+        ***<br/>
+        <br/>
+        *<br/>
+        1. 程序分析：先把图形分成两部分来看待，前四行一个规律，后三行一个规律，利用双重 for 循环，第一层控制行，第二层控制列。
+
+        2. 程序源代码：
+        <h3> var i, j,k;<br/>
+        for(i=0;i<=3;i++){<br/>
+        for(j=0;j<=2-i;j++){<br/>
+        document.write("")<br/>
+        }
+        for(k=0;k<=i*2;k++){<br/>
+        document.write("*")<br/>
+        }
+        document.write("br/>")<br/>
+        }
+        for(i=0;i<=2;i++){<br/>
+        for(j=0;j<=i;j++){<br/>
+        document.write("")<br/>
+        }
+        for(k=0;k<=4-2*i;k++){<br/>
+        document.write("*")<br/>
+        }
+        document.write("br/>")<br/>
+        }
+        document.write("hr/>")</h3><br/>
+    </p>
+<script>
+        var i, j,k;
+        for(i=0;i<=3;i++){
+            for(j=0;j<=2-i;j++){
+                document.write("")
+            }
+            for(k=0;k<=i*2;k++){
+                document.write("*")
+            }
+            document.write("<br/>")
+        }
+        for(i=0;i<=2;i++){
+            for(j=0;j<=i;j++){
+                document.write("")
+            }
+            for(k=0;k<=4-2*i;k++){
+                document.write("*")
+            }
+            document.write("<br/>")
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 24 】</span>
+
+        题目：有一分数序列： 2/1 ， 3/2 ， 5/3 ， 8/5 ， 13/8 ， 21/13... 求出这个数列的前 20 项之和。
+
+        1. 程序分析：请抓住分子与分母的变化规律。
+
+        2. 程序源代码：
+
+    </p>
+    <h3>var a= 2,b= 1,s= 0,t;<br/>
+        for(var n=1;n<=20;n++){<br/>
+        s=s+a/b;<br/>
+        t=a;a=a+b;b=t;<br/>
+        }
+        document.write("前二十项总和为"+s)</h3>
+    <script>
+        var a= 2,b= 1,s= 0,t;
+        for(var n=1;n<=20;n++){
+            s=s+a/b;
+            t=a;a=a+b;b=t;
+        }
+        document.write("前二十项总和为"+s+"<hr/>")
+    </script>
+    <p>
+        <span>【程序 25 】</span>
+        题目：求 1+2!+3!+...+20! 的和
+
+        1. 程序分析：此程序只是把累加变成了累乘。
+
+        2. 程序源代码：
+        <h3> var s=0;t=1;<br/>
+        for(var n=1;n<=20;n++){<br/>
+        t*=n;//累乘 5！=1x2x3x4x5;<br/>
+        s+=t;<br/>
+        }
+        document.write(s)</h3>
+
+    </p>
+    <script>
+        var s=0;t=1;
+        for(var n=1;n<=20;n++){
+            t*=n;//累乘 5！=1x2x3x4x5;
+            s+=t;
+        }
+        document.write(s+"<br/>")
+    </script>
+    <p>
+        <span>【程序 26 】</span>
+
+        题目：利用递归方法求 5! 。
+
+        1. 程序分析：递归公式： fn=fn_1*4!
+
+        2. 程序源代码：<input type="text"/><input type="button" value="点击" onclick="ob()"/>
+
+    </p>
+    <h3> function ob(n){<br/>
+        n=document.getElementsByTagName("input")[0].value;<br/>
+        var sum=1;<br/>
+        if(n<0){alert("输入错误")}<br/>
+        else{<br/>
+        for(var i=1;i<=n;i++){<br/>
+        if(i==n){<br/>
+        sum*=i;<br/>
+        document.write(i+"="+sum)}<br/>
+        else{<br/>
+        sum*=i;document.write(i+"*")<br/>
+        }}}}</h3>
+    <script>
+        function ob(n){
+            n=document.getElementsByTagName("input")[0].value;
+            var sum=1;
+            if(n<0){alert("输入错误")}
+            else{
+                for(var i=1;i<=n;i++){
+                    if(i==n){
+                        sum*=i;
+                        document.write(i+"="+sum)}
+                    else{
+                        sum*=i;document.write(i+"*")
+                    }
+
+                }
+
+            }
+        }
+    </script>
+    <p>
+        <span>【程序 27 】</span>
+
+        题目：利用递归函数调用方式，将所输入的 5 个字符，以相反顺序打印出来。
+
+        1. 程序分析：
+
+        2. 程序源代码：<input class="d1" type="text"/> <input type="button" value="确定" onclick="ct()"/>
+    </p>
+    <script>
+        function ct(){
+            var n=document.getElementsByClassName("d1")[0].value;
+           var arr=[];
+            arr=n.split("")
+            alert(arr.reverse())
+        }
+    </script>
+    <p>
+        <span>【程序 28 】</span>
+
+        题目：有 5 个人坐在一起，问第五个人多少岁？他说比第 4 个人大 2 岁。问第 4 个人岁数，他说比第 3 个人大 2 岁。问第三个人，又说比第 2 人大两岁。问第 2 个人，说比第一个人大两岁。最后问第一个人，他说是 10 岁。请问第五个人多大？
+
+        1. 程序分析：利用递归的方法，递归分为回推和递推两个阶段。要想知道第五个人岁数，需知道第四人的岁数，依次类推，推到第一人（ 10 岁），再往回推。
+
+        2. 程序源代码：
+        <h3> var n=10;<br/>
+        for(var i=1;i<5;i++){<br/>
+        n+=2<br/>
+        }<br/>
+        document.write(n)</h3>
+    </p>
+    <script>
+        var n=10;
+        for(var i=1;i<5;i++){
+            n+=2
+        }
+        document.write(n+"<hr/>")
+    </script>
+    <p>
+        <span>【程序 29 】</span>
+
+        题目：给一个不多于 5 位的正整数，要求：一、求它是几位数，二、逆序打印出各位数字。
+
+        1. 程序分析：学会分解出每一位数，如下解释：
+
+        2. 程序源代码：<input id="d1" type="text"/><input type="button" onclick="number()" value="确定"/>
+    </p>
+    <h3>  function number(){<br/>
+        var num=document.getElementById("d1").value;<br/>
+        var reg=/^[0-9]{1,5}$/;<br/>
+        if(!reg.test(num)){alert("请输入1-5个数字")}<br/>
+        else{<br/>
+        var arr=new Array();<br/>
+        arr=num.split("");<br/>
+        alert("输入了"+arr.length+"位数"+arr.reverse())<br/>
+        }
+        }</h3>
+    <script>
+        function number(){
+            var num=document.getElementById("d1").value;
+            var reg=/^[0-9]{1,5}$/;
+            if(!reg.test(num)){alert("请输入1-5个数字")}
+            else{
+                var arr=new Array();
+                arr=num.split("");
+                alert("输入了"+arr.length+"位数"+arr.reverse())
+            }
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 30 】</span>
+        题目：一个 5 位数，判断它是不是回文数。即 12321 是回文数，个位与万位相同，十位与千位相同。　　　
+        1. 程序分析：同 29 例
+        2. 程序源代码：<input id="d2" type="text"/><input type="button" value="按钮" onclick="omg()"/>
+    </p>
+    <h3> function omg() {<br/>
+        var ge, shi, qian, wan, x;<br/>
+        x = document.getElementById("d2").value;<br/>
+        var reg = /^[0-9]{5}$/;<br/>
+        if (reg.test(x)) {<br/>
+        wan = parseInt(x / 10000);//分解万位<br/>
+        qian = parseInt(x % 10000 / 1000);//分解千位；<br/>
+        shi = parseInt(x % 100 / 10);//分解十位<br/>
+        ge = parseInt(x % 10);//分解个位<br/>
+        if (wan == ge && qian == shi) {<br/>
+        document.write("是回文数")<br/>
+        }else{document.write("不是回文数")}<br/>
+        }
+        else {<br/>
+        document.write("请输入5位数")<br/>
+        }
+        }</h3>
+    <script>
+        function omg() {
+            var ge, shi, qian, wan, x;
+            x = document.getElementById("d2").value;
+            var reg = /^[0-9]{5}$/;
+            if (reg.test(x)) {
+                wan = parseInt(x / 10000);//分解万位
+                qian = parseInt(x % 10000 / 1000);//分解千位；
+                shi = parseInt(x % 100 / 10);//分解十位
+                ge = parseInt(x % 10);//分解个位
+                if (wan == ge && qian == shi) {
+                    document.write("是回文数")
+                }else{document.write("不是回文数")}
+            }
+            else {
+                document.write("请输入5位数")
+            }
+        }
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 31 】</span>
+
+        题目：请输入星期几的第一个字母来判断一下是星期几，如果第一个字母一样，则继续　　　判断第二个字母。
+
+        1. 程序分析：用情况语句比较好，如果第一个字母一样，则判断用情况语句或 if 语句判断第二个字母。
+
+        2. 程序源代码：<input type="text" id="d3"/><input type="button" value="检测" onclick="bj()"/>
+
+    </p>
+    <script>
+        function bj() {
+            var day = document.getElementById("d3").value;
+            switch (day) {
+                case "M":
+                    console.log("星期一");
+                    break;
+                case "T":
+                    console.log("请输入下一位");
+                    if (day == "Tu") {
+                        console.log("星期二")
+                    } else if (day == "Th") {
+                        console.log("星期四")
+                    }
+                    break;
+                case "W":
+                    console.log("星期三");
+                    break;
+                case "F":
+                    console.log("星期五");
+                    break;
+                case "S":
+                    console.log("请输入下一位字母");
+                    if (day == "Sa") {
+                        console.log("星期六")
+                    } else if (day == "Su") {
+                        console.log("星期天")
+                    }
+                    break;
+            }
+        }
+    </script>
+    <p>
+        <span>【程序 32 】</span>
+
+        题目： Press any key to change color, do you want to try it. Please hurry up!
+
+        1. 程序分析：　　　　　　　　　　　　
+
+        2. 程序源代码：
+
+    </p>
+    <script>
+        for(var color=0;color<8;color++){
+            textBackground(color)
+        }
+    </script>
+    <p>
+        <span>【程序 36 】</span>
+        题目：求 100 之内的素数　
+    </p>
+    <script>
+        var arr=[99];
+        for(var i=2;i<arr.length;i++){
+            arr[i]=i;
+            for(i=2;i<Math.sqrt(100);i++){
+                for(var j=i+1;j<100;j++){
+                    if(arr[i]!=0&&arr[j]!=0){
+                        if(arr[i]%arr[j]==0){
+                            arr[j]=0;
+                        }
+                    }
+                }
+            }
+        }
+        var line=0;
+        for(i=2;i<100;i++){
+            if(arr[i]!=0){
+                console.log(arr[i]);
+                line++;
+                if(line==10){
+                    line=0
+                }
+            }
+        }
+    </script>
+    
+    <p>
+    <span>【程序 37 】</span>
+    题目：对 10 个数进行排序
+    1. 程序分析：可以利用选择法，即从后 9 个比较过程中，选择一个最小的与第一个元素交换，下次类推，即用第二个元素与后 8 个进行比较，并进行交换。
+    2. 程序源代码：
+    <h3> function ob() {<br/>
+    var arr = [10, 9, 8, 7, 6, 5,20,48,46,44,4,574,87,23,55,59,8];<br/>
+    for (var r = 0; r < arr.length; r++) {<br/>
+    for(var i=0;i<(arr.length-r);i++){<br/>
+    if(arr[i]>arr[i+1]){<br/>
+    arr[i]+=arr[i+1];<br/>
+    arr[i+1]=arr[i]-arr[i+1];<br/>
+    arr[i]-=arr[i+1];<br/>
+    }
+    }
+    }
+    console.log(arr)<br/>
+    }
+    ob()</h3>
+</p>
+<script>
+    function ob() {
+        var arr = [10, 9, 8, 7, 6, 5,20,48,46,44,4,574,87,23,55,59,8];
+        for (var r = 0; r < arr.length; r++) {
+            for(var i=0;i<arr.length-r;i++){
+                if(arr[i]>arr[i+1]){
+                    arr[i]+=arr[i+1];
+                    arr[i+1]=arr[i]-arr[i+1];
+                    arr[i]-=arr[i+1];
+                }
+            }
+        }
+        console.log(arr)
+    }
+    ob()
+document.write("<hr/>")
+</script>
+    <p>
+        <span>【程序 38 】</span>
+
+        题目：求一个 3*3 矩阵对角线元素之和
+
+        1. 程序分析：利用双重 for 循环控制输入二维数组，再将 a[i][i] 累加后输出。
+
+        2. 程序源代码：
+    </p>
+    <h3>var arr=[<br/>
+        [1,2,3],<br/>
+        [4,5,6],<br/>
+        [7,8,9]<br/>
+        ];<br/>
+        var sum=0;<br/>
+        for(var i=0;i<(arr.length);i++ ){<br/>
+        for(var j=0;j<(arr[i].length);j++){<br/>
+        if(i==j||(i+j)==2){<br/>
+        sum+=arr[i][j]<br/>
+        }
+        }
+        }
+        console.log(sum)</h3>
+    <script>
+        var arr=[
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ];
+        var sum=0;
+        for(var i=0;i<arr.length;i++ ){
+            for(var j=0;j<arr[i].length;j++){
+
+                if(i==j||(i+j)==2){
+                    sum+=arr[i][j]
+                }
+            }
+        }
+        console.log(sum)
+        document.write("<hr/>")
+    </script>
+    <p>
+       <span>【程序 39 】</span>
+        题目：有一个已经排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。
+        1. 程序分析：首先判断此数是否大于最后一个数，然后再考虑插入中间的数的情况，插入后此元素之后的数，依次后移一个位置。
+        2. 程序源代码：
+    </p>
+    <h3>    var arr=[1,2,3,4,6,7,8,9];<br/>
+            var number=5;var temp1,temp2;<br/>
+                for(var i=0;i<(arr.length);i++){<br/>
+                    if(arr[arr.length-1]<(number){<br/>
+                        arr[arr.length]=number<br/>
+                    }else{<br/>
+                        if(arr[i]>=number){<br/>
+                            temp1=arr[i];<br/>
+                            arr[i]=number;<br/>
+                             for(var j=i+1;j<9;j++){<br/>
+                                temp2=arr[j];<br/>
+                                arr[j]=temp1;<br/>
+                                temp1=temp2<br/>
+                                }<br/>
+                        break;<br/>
+                    }<br/>
+                 }<br/>
+             }<br/>
+        console.log(arr)</h3><br/>
+    <script>
+        var arr=[1,2,3,4,6,7,8,9];
+        var number=5;var temp1,temp2;
+        for(var i=0;i<arr.length;i++){
+            if(arr[arr.length-1]<number){
+                arr[arr.length]=number
+            }else{
+                if(arr[i]>=number){
+                    temp1=arr[i];
+                    arr[i]=number;
+                    for(var j=i+1;j<9;j++){
+                        temp2=arr[j];
+                        arr[j]=temp1;
+                        temp1=temp2
+                    }
+                    break;
+                }
+            }
+        }
+        console.log(arr);
+        document.write("<hr/>")
+    </script>
+    <p>
+        <span>【程序 40 】</span>
+
+        题目：将一个数组逆序输出。
+
+        1. 程序分析：用第一个与最后一个交换。
+
+        2. 程序源代码：
+    </p>
+    <h3>
+        var arr=[10,20,30,40,50];<br/>
+        for(var i=0;i<(arr.length/2);i++){<br/>
+        var temp1=arr[i];<br/>
+        arr[i]=arr[arr.length-i-1];<br/>
+        arr[arr.length-i-1]=temp1<br/>
+        }
+        console.log(arr)<br/>
+    </h3>
+    <script>
+        var arr=[10,20,30,40,50];
+            for(var i=0;i<arr.length/2;i++){
+                var temp1=arr[i];
+                arr[i]=arr[arr.length-i-1];
+                arr[arr.length-i-1]=temp1
+            }
+        console.log(arr);
+        document.write("<hr/>")
+    </script>
+    <p>
+       <span> 【程序 56 】</span>
+
+        题目：画图，学用 circle 画圆形。　　　
+
+        1. 程序分析：用带参数的构造函数定义一个对象Circle（圆），它的三个属性分别是x、y和radius（代表圆心的x、y坐标和圆的半径），
+        在Circle函数的prototype上添加三个方法getDiameter、getCircumference和getArea，
+        它们分别返回圆的直径、周长和面积。编写代码测试这个对象。
+        2. 程序源代码：
+    </p>
+    <h3> function Circle(x,y,radius){<br/>
+        this.x=x;//圆心的宽<br/>
+        this.y=y;//圆心的高<br/>
+        this.radius=radius,//圆的半径<br/>
+        Circle.prototype.getDiameter=function(){//返回圆的直径<br/>
+        return this.radius*2;<br/>
+        },<br/>
+        Circle.prototype.getCircunference=function(){//返回圆的周长<br/>
+        return Math.PI*2*this.radius<br/>
+        },<br/>
+        Circle.prototype.getArea=function(){//返回圆的面积<br/>
+        return Math.PI*this.radius*this.radius<br/>
+        }<br/>
+        }<br/>
+        var circle=new Circle(10,10,20);<br/>
+        console.log("圆的直径为"+circle.getDiameter());<br/>
+        console.log("圆的周长为"+circle.getCircunference());<br/>
+        console.log("圆的面积为"+circle.getArea())</h3><br/>
+    <script>
+        function Circle(x,y,radius){
+            this.x=x;//圆心的宽
+            this.y=y;//圆心的高
+            this.radius=radius,//圆的半径
+                Circle.prototype.getDiameter=function(){//返回圆的直径
+                    return this.radius*2;
+                },
+                Circle.prototype.getCircunference=function(){//返回圆的周长
+                    return Math.PI*2*this.radius
+                },
+                Circle.prototype.getArea=function(){//返回圆的面积
+                    return Math.PI*this.radius*this.radius
+                }
+        }
+        var circle=new Circle(10,10,20);
+            console.log("圆的直径为"+circle.getDiameter());
+            console.log("圆的周长为"+circle.getCircunference());
+            console.log("圆的面积为"+circle.getArea())
+    document.write("<hr/>")
+    </script>
+    <p>
+       <span>【程序 57 】</span>
+        题目：画图，学用 line 画直线。
+
+        1. 程序分析：　　　　　　　　　　　
+
+        2. 程序源代码：
+    </p>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        var canvas=document.getElementById("myCanvas");
+        var ctx=canvas.getContext("2d");
+        ctx.fillstyle="";//图形填充颜色；
+        ctx.fillRect(10,10,100,100);//绘制一个红色矩形
+
+    </script>
+    
+     <p>
+        <span>【程序 61 】</span>
+        题目：打印出杨辉三角形（要求打印出 10 行如下图）
+        1. 程序分析：
+
+        1
+
+        1 1
+
+        1 2 1
+
+        1 3 3 1
+
+        1 4 6 4 1
+
+        1 5 10 10 5 1
+
+        2. 程序源代码：
+    </p>
+    <script>
+/****
+        function fun(r){
+         var i, j,arr=[10][10];
+        for(i=0;i<r;i++){
+            for(j=0;j<i;j++){
+                if(i==0||j==0||j==arr[i].length-1){
+                    arr[i][j]=1;
+                }
+                else{arr[i][j]=arr[i-1][j-1]+arr[i-1][j]}
+            }
+            console.log(arr[i][j])
+        }
+        }
+        fun(5)*****/
+
+       var write=function() {
+           for(var i=0;i<arguments.length;i++) {
+               document.write(" "+arguments[i]);
+           }
+       };
+       var fun=function(n) {
+           for(var i=1;i<=n;i++) {
+               var  k=1;
+               for(var j=1;j<i;j++) {
+                   write(k);
+                   k=k*(i-j)/j;
+               }
+               write("1<br/>");
+           }
+       };
+       fun(10);
+    </script>
+    <p>
+        <span>【程序 66 】 </span>
+        题目：输入 3 个数 a,b,c ，按大小顺序输出。　　　
+
+        1. 程序分析：利用指针方法。
+
+        2. 程序源代码：
+        <script>
+            var a=7, b=6, c=5,arr=[];
+            arr[0]=a;
+            arr[1]=b;
+            arr[2]=c;
+            console.log(arr.sort(function(a,b){return a-b}) )
+        </script>
+    </p>
+    <p>
+        <span>【程序 67 】</span>
+
+        题目：输入数组，最大的与第一个元素交换，最小的与最后一个元素交换，输出数组。
+
+        1. 程序分析：谭浩强的书中答案有问题。　
+    </p>
+    <script>
+        var arr=[2,3,1,5,6,12,8,9];
+        console.log(arr)
+        var max=Math.max.apply(Math,arr);//获取数组最大值
+        var min=Math.min.apply(Math,arr);//获取数组最小资
+        var maxNumber=arr.indexOf(max);//找到最大值的位置
+        var minNumber=arr.indexOf(min);//找到最小值的位子
+        var a=arr[0];//
+        arr[0]=max;//第一个值等于最大的值
+        arr[maxNumber]=a;//最大值的位置等于第一个值
+        var b=arr[arr.length-1];
+        arr[arr.length-1]=min;//最后一个值等于最小值
+        arr[minNumber]=b;//最小值的位置等于最后一个值
+        console.log(arr )
+    </script>
+    <p>
+        <span>【程序 68 】</span>
+        题目：有 n 个整数，使其前面各数顺序向后移 m 个位置，最后 m 个数变成最前面的 m 个数
+        1. 程序分析：
+        2. 程序源代码：
+    </p>
+    <script>
+        function ob() {
+            var arr = [10, 20, 30, 40, 50];
+            var str="";
+            var m = prompt("输入移动多少位");
+            while (true) {
+                if (m < 0 || m > arr.length - 1) {
+                    alert("移动位数不能大于等于数组个数，且不能为负数，请重新输入");
+                    m = prompt("输入移动多少位")
+                } else {
+                    break;
+                }
+            }
+            for(var i=0;i<m;i++){
+                str+=arr[arr.length-1-m+i]//截取m到arr.length-1之间的值
+            }
+            for(var j=0;j<arr.length-1-m;j++){
+                str+=arr[i];//获取0到m之间的值
+            }
+           str+=arr[arr.length-1-m];
+            var n=str.split("&nbsp;")
+            alert(n)
+        }
+        ob()
+    </script>
+    <p>
+        <span>【程序 69 】</span>
+        题目：有 n 个人围成一圈，顺序排号。从第一个人开始报数（从 1 到 3 报数），凡报到 3 的人退出圈子，
+        问最后留下的是原来第几号的那位。
+        1. 程序分析：
+        2. 程序源代码：
+    <p>
+        <script>
+
+            function baoshu(){
+                var i,k,m,n,num=[50],b;
+                p=num;
+                for(i=0;i<n;i++)
+                    *(p+i)=i+1;
+                i=0;
+                k=0;
+                m=0;
+                while(m<n-1) {
+                    if(*(p+i)!=0) k++;
+                    if(k==3)
+                    { *(p+i)=0;
+                        k=0;
+                        m++;
+                    }
+                    i++;
+                    if(i==n) i=0;
+                }
+                while(*p==0) p++;
+                printf("%d is left\n",*p);
+            }
+            baoshu();
+        </script>
+        
+        
+         <p>
+        <span>【程序 75 】</span>
+
+        题目：放松一下，算一道简单的题目。
+
+        1. 程序分析：
+
+        2. 程序源代码：
+    </p>
+    <script>
+        function main(){
+            var n;
+            for(var i=1;i<5;i++){
+                n=0;
+                if(i!=1){n=n+1}
+                if(i==3){n=n+1}
+                if(i==4){n=n+1}
+                if(i!=4){n=n+1}
+                if(n==3){console.log(64+i)}
+            }
+        }
+        main()
+    </script>
+    <p>
+        <span>【程序 76 】</span>
+
+        题目：编写一个函数，输入 n 为偶数时，调用函数求 1/2+1/4+...+1/n,
+        当输入 n 为奇数时，调用函数 1/1+1/3+...+1/n( 利用指针函数 )
+        1. 程序分析：
+        2. 程序源代码：
+    </p>
+    <script>
+        var n=5;
+        if(n%2==0){
+            oshu()
+        }else{ jshu()}
+        function oshu(){
+            var sum=0;
+            for(var i=2;i<=n;i+=2){
+                sum+=1/i
+            }
+            console.log(sum)
+        }
+        function jshu(){
+            var sum=0;
+            for(var i=1;i<=n;i+=2){
+                sum+=1/i
+            }
+            console.log(sum)
+        }
+    </script>
+    <p>
+        <span>【程序 80 】 </span>
+        题目：海滩上有一堆桃子，五只猴子来分。第一只猴子把这堆桃子凭据分为五份，多了一个，这只猴子把多的一个扔入海中，
+    <p>
+      <span>【程序 88 】</span>
+
+        题目：读取 7 个数（ 1 — 50 ）的整数值，每读取一个值，程序打印出该值个数的＊。
+
+        1. 程序分析：
+
+        2. 程序源代码：
+    </p>
+    <script>
+        var i,n=1;
+        while(n<=7){
+
+                for(i=1;i<=60;i++){
+                    console.log("*")
+                }
+                console.log("<br/>")
+            n++;
+        }
+    </script>
+    <p>
+        <span>【程序 89 】</span>
+        题目：某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，加密规则如下：
+        每位数字都加上 5, 然后用和除以 10 的余数代替该数字，再将第一位和第四位交换，第二位和第三位交换。
+    </p>
+    <script>
+        var n=1234,qian,bai,shi,ge;
+        qian=Math.floor(n/1000);
+        bai=Math.floor(n%1000/100);
+        shi=Math.floor(n%100/10);
+        ge=Math.floor(n%10);
+        console.log(qian);
+        qian=(qian+5+qian)%10;
+        bai=(bai+5+bai)%10;
+        shi=(shi+5+shi)%10;
+        ge=(ge+5+ge)%10;
+        var q=qian,b=bai,s=shi,g=ge;
+        qian=g;bai=s;shi=b;ge=q;
+        console.log(qian+"|"+bai+"|"+shi+"|"+ge)
+
+    </script>
+    
+    
+    
+    
+    
+</body>
+</html>
