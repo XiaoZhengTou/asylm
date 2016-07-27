@@ -1,0 +1,499 @@
+<!--主页面-->
+<!doctype html>
+<html lang="en" ng-app="routerApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Book Store</title>
+    <link rel="stylesheet" href="framework/bootstrap-3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="framework/ng-grid-2.0.12/ng-grid.css">
+    <script src="framework/jquery-1.9.1.js"></script>
+    <script src="framework/angular-1.3.0.14/angular.js"></script>
+    <script src="framework/angular-1.3.0.14/angular-animate.min.js"></script>
+    <script src="framework/angular-ui-router.js"></script>
+    <script src="framework/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="framework/ng-grid-2.0.12/ng-grid.debug.js"></script>
+
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/app.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/services.js"></script>
+</head>
+
+<body>
+    <div ui-view></div>
+</body>
+
+</html>
+
+
+<!--分页面addBookForm.html-->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title">新增书籍</div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" name="form">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            书名：
+                        </label>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" placeholder="最多64个字符" ng-model="userInfo.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            类型：
+                        </label>
+                        <div class="col-md-10">
+                            <select class="form-control">
+                                <option>计算机</option>
+                                <option>金融</option>
+                                <option>哲学</option>
+                                <option>高端办公</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            出版日期：
+                        </label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" placeholder="日期格式YYYY-mm-dd" ng-model="userInfo.password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            作者：
+                        </label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" placeholder="最多16个字符" ng-model="userInfo.password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            是否有电子书：
+                        </label>
+                        <div class="col-md-10">
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <a ui-sref="booklist" class="btn btn-success" ng-disabled="form.$invalid">保存</a>
+                            <a ui-sref="booklist({bookType:0})" class="btn btn-primary">取消</a>
+                            <button class="btn btn-default" ng-click="setFormData()">清空表单</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--分页面bookDetail.html-->
+<div class="well" ng-controller="BookDetailCtrl">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="../image/angularjs.jpg" alt="用AngularJS开发下一代WEB应用" width="80%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a ui-sref="booklist({bookType:0})" class="btn btn-primary">返回列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal" role="form" name="form">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                书名：
+                            </label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">
+                                    <a href="http://item.jd.com/11342818.html" target="_blank">《用AngularJS开发下一代WEB应用》</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                类型：
+                            </label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">计算机</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                出版日期：
+                            </label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">2016-07</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                作者：
+                            </label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">徐振</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                定价
+                            </label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">50元</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                是否有电子书：
+                            </label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">无</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--分页面bookGrid.html-->
+<div ng-controller="BookListCtrl">
+    <div class="row">
+        <div class="col-md-12">
+        	<a ui-sref="addbook" class="btn btn-primary">新增书籍</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="gridStyle" ng-grid="gridOptions">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--分页面bookList.html-->
+<div class="container">
+	<div class="row">
+	    <div class="col-md-3">
+	        <div ui-view="booktype">
+	        	书籍类型加载中...
+	        </div>
+	    </div>
+	    <div class="col-md-9">
+	        <div ui-view="bookgrid">
+	        	书籍列表加载中...
+	        </div>
+	    </div>
+	</div>
+</div>
+
+<!--分页面bookType.html-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="list-group">
+            <a href="javascript:void(0);" class="list-group-item active">
+				书籍类型
+            </a>
+            <a ui-sref="booklist({bookType:0})" class="list-group-item">全部</a>
+            <a ui-sref="booklist({bookType:1})" class="list-group-item">计算机</a>
+            <a ui-sref="booklist({bookType:2})" class="list-group-item">金融</a>
+            <a ui-sref="booklist({bookType:3})" class="list-group-item">哲学</a>
+            <a ui-sref="booklist({bookType:4})" class="list-group-item">高端办公</a>
+        </div>
+    </div>
+</div>
+
+
+<!--分页面home.html-->
+<div class="container">
+    <div ui-view="main"></div>
+</div>
+
+<!--分页面loginForm.html-->
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">图书管理系统</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            用户名：
+                        </label>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" placeholder="推荐使用126邮箱" ng-model="userInfo.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            密码：
+                        </label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" placeholder="只能是数字、字母、下划线" ng-model="userInfo.password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <a ui-sref="booklist({bookType:0})" class="btn btn-success btn-lg">登录</a>
+                            <button class="btn btn-default btn-lg" ng-click="setFormData()">注册</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--js代码区-->
+<!--app.js-->
+var routerApp = angular.module('routerApp', ['ui.router', 'ngGrid', 'BookListModule', 'BookDetailModule']);
+/**
+ * 由于整个应用都会和路由打交道，所以这里把$state和$stateParams这两个对象放到$rootScope上，方便其它地方引用和注入。
+ * 这里的run方法只会在angular启动的时候运行一次。
+ * @param  {[type]} $rootScope
+ * @param  {[type]} $state
+ * @param  {[type]} $stateParams
+ * @return {[type]}
+ */
+routerApp.run(function($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+});
+
+/**
+ * 配置路由。
+ * 注意这里采用的是ui-router这个路由，而不是ng原生的路由。
+ * ng原生的路由不能支持嵌套视图，所以这里必须使用ui-router。
+ * @param  {[type]} $stateProvider
+ * @param  {[type]} $urlRouterProvider
+ * @return {[type]}
+ */
+routerApp.config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/index');
+    $stateProvider
+        .state('index', {
+            url: '/index',
+            views: {
+                '': {
+                    templateUrl: 'tpls/home.html'
+                },
+                'main@index': {
+                    templateUrl: 'tpls/loginForm.html'
+                }
+            }
+        })
+        .state('booklist', {
+            url: '/{bookType:[0-9]{1,4}}',
+            views: { //注意这里的写法，当一个页面上带有多个ui-view的时候如何进行命名和视图模板的加载动作
+                '': {
+                    templateUrl: 'tpls/bookList.html'
+                },
+                'booktype@booklist': {
+                    templateUrl: 'tpls/bookType.html'
+                },
+                'bookgrid@booklist': {
+                    templateUrl: 'tpls/bookGrid.html'
+                }
+            }
+        })
+        .state('addbook', {
+            url: '/addbook',
+            templateUrl: 'tpls/addBookForm.html'
+        })
+        .state('bookdetail', {
+            url: '/bookdetail/:bookId', //注意这里在路由中传参数的方式
+            templateUrl: 'tpls/bookDetail.html'
+        })
+});
+
+
+<!--controller.js-->
+/**
+ * 这里是书籍列表模块
+ * @type {[type]}
+ */
+var bookListModule = angular.module("BookListModule", []);
+bookListModule.controller('BookListCtrl', function($scope, $http, $state, $stateParams) {
+    $scope.filterOptions = {
+        filterText: "",
+        useExternalFilter: true
+    };
+    $scope.totalServerItems = 0;
+    $scope.pagingOptions = {
+        pageSizes: [5, 10, 20],
+        pageSize: 5,
+        currentPage: 1
+    };
+    $scope.setPagingData = function(data, page, pageSize) {
+        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+        $scope.books = pagedData;
+        $scope.totalServerItems = data.length;
+        if (!$scope.$$phase) {
+            $scope.$apply();
+        }
+    };
+
+    //这里可以根据路由上传递过来的bookType参数加载不同的数据
+    console.log($stateParams);
+    $scope.getPagedDataAsync = function(pageSize, page, searchText) {
+        setTimeout(function() {
+            var data;
+            if (searchText) {
+                var ft = searchText.toLowerCase();
+                $http.get('data/books' + $stateParams.bookType + '.json')
+                    .success(function(largeLoad) {
+                        data = largeLoad.filter(function(item) {
+                            return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+                        });
+                        $scope.setPagingData(data, page, pageSize);
+                    });
+            } else {
+                $http.get('data/books' + $stateParams.bookType + '.json')
+                    .success(function(largeLoad) {
+                        $scope.setPagingData(largeLoad, page, pageSize);
+                    });
+            }
+        }, 100);
+    };
+
+    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+
+    $scope.$watch('pagingOptions', function(newVal, oldVal) {
+        if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+        }
+    }, true);
+    $scope.$watch('filterOptions', function(newVal, oldVal) {
+        if (newVal !== oldVal) {
+            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+        }
+    }, true);
+
+    $scope.gridOptions = {
+        data: 'books',
+        rowTemplate: '<div style="height: 100%"><div ng-style="{ \'cursor\': row.cursor }" ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' +
+            '<div class="ngVerticalBar" ng-style="{height: rowHeight}" ng-class="{ ngVerticalBarVisible: !$last }"> </div>' +
+            '<div ng-cell></div>' +
+            '</div></div>',
+        multiSelect: false,
+        enableCellSelection: true,
+        enableRowSelection: false,
+        enableCellEdit: true,
+        enablePinning: true,
+        columnDefs: [{
+            field: 'index',
+            displayName: '序号',
+            width: 60,
+            pinnable: false,
+            sortable: false
+        }, {
+            field: 'name',
+            displayName: '书名',
+            enableCellEdit: true
+        }, {
+            field: 'author',
+            displayName: '作者',
+            enableCellEdit: true,
+            width: 220
+        }, {
+            field: 'pubTime',
+            displayName: '出版日期',
+            enableCellEdit: true,
+            width: 120
+        }, {
+            field: 'price',
+            displayName: '定价',
+            enableCellEdit: true,
+            width: 120,
+            cellFilter: 'currency:"￥"'
+        }, {
+            field: 'bookId',
+            displayName: '操作',
+            enableCellEdit: false,
+            sortable: false,
+            pinnable: false,
+            cellTemplate: '<div><a ui-sref="bookdetail({bookId:row.getProperty(col.field)})" id="{{row.getProperty(col.field)}}">详情</a></div>'
+        }],
+        enablePaging: true,
+        showFooter: true,
+        totalServerItems: 'totalServerItems',
+        pagingOptions: $scope.pagingOptions,
+        filterOptions: $scope.filterOptions
+    };
+});
+
+
+/**
+ * 这里是书籍详情模块
+ * @type {[type]}
+ */
+var bookDetailModule = angular.module("BookDetailModule", []);
+bookDetailModule.controller('BookDetailCtrl', function($scope, $http, $state, $stateParams) {
+    console.log($stateParams);
+    //请模仿上面的代码，用$http到后台获取数据....
+    
+});
+
+
+<!--模拟后台数据data.json-->
+[{
+    "bookId":"1",
+    "index": "1",
+    "name": "用AngularJS开发下一代WEB应用",
+    "author": "徐振",
+    "pubTime": "2016-07-20",
+    "price":"35"
+}, {
+    "bookId":"2",
+    "index": "2",
+    "name": "Ext江湖",
+    "author": "徐振",
+    "pubTime": "2016-07-20",
+    "price":"35"
+}, {
+    "bookId":"3",
+    "index": "3",
+    "name": "ActionScript3.0游戏设计基础（第二版）",
+    "author": "徐振",
+    "pubTime": "2016-07-20",
+    "price":"35"
+}, {
+    "bookId":"4",
+    "index": "4",
+    "name": "用AngularJS开发下一代WEB应用",
+    "author": "徐振",
+    "pubTime": "2016-07-21",
+    "price":"35"
+}, {
+    "bookId":"5",
+    "index": "5",
+    "name": "Ext江湖",
+    "author": "徐振",
+    "pubTime": "2016-07-21",
+    "price":"35"
+}]
+
