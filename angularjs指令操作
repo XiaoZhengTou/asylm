@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="Mymd1">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div ng-controller="demo1">
+    <lodar haoToload="lodaData()">滑动加载</lodar>
+</div>
+<div ng-controller="demo2">
+    <lodar haoToload="lodaData2()">滑动加载</lodar>
+</div>
+<script src="AngularJS-1.4.1/AngularJS-1.4.1/js/angular.js"></script>
+<script>
+    var mymodal = angular.module("Mymd1", []);
+    mymodal.controller("demo1", ['$scope', function ($scope) {
+        $scope.lodaData = function () {
+            console.log("加载数据...")
+        }
+    }]);
+    mymodal.controller("demo2", ['$scope', function ($scope) {
+        $scope.lodaData2 = function () {
+            console.log("加载数据222...")
+        }
+    }]);
+    mymodal.directive("lodar", function () {
+        return {
+            restrict: "AEMC",//A为attr;E为Element;M为注释;C为class默认为AE
+             template: "<div>hello,everyone!<div ng-transclude></div></div>",//嵌套在lodar中
+            //templateUrl: "03.html",//直接访问一个页面
+            transclude: true,
+            // compile:function(){//自定义函数}，
+            link: function (scope, element, attr) {//link函数一般用来操作DOM，绑定事件监听器；
+                element.bind("mouseenter", function () {
+                    //scope.lodaData();
+                   // scope.$apply("lodaData()");
+                   // attr.haotoload();
+                    scope.$apply(attr.haotoload);//调用的时候haoToload的T要变小写
+                })
+            }
+        }
+    });
+    /****** mymodal.run(function($templateCache){
+           $templateCache.put("03.html","<div>Hello,everyone!!!</div>")
+    })***/
+</script>
+</body>
+</html>
