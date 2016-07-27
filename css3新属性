@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #d1{
+            -webkit-perspective:800px;
+            -webkit-perspective-origin:50% 50%;
+        }
+        #d2{
+            width:200px;
+            height:200px;
+            margin:100px auto;
+            background-color:#693;
+            -webkit-transform:rotate(0deg)
+        }
+        #op {
+           text-align:center;
+        }
+        #op .range-contral {width:721px;}
+        .d1{
+            width:100px;
+            height:100px;
+            margin:60px auto;
+            background-color:red;
+            transition:all 1s ease ;
+        }
+        #D11:hover{
+            transform:scale(0.5);
+            background-color:blue;
+        }
+        #D22:hover {
+            transform:translate(15px,15px);
+            background-color:blue;
+        }
+        #D3:hover {
+            transform:rotate(360deg);
+            background-color:blue;
+        }
+        #D4:hover {
+            transform:skew(40deg,40deg);
+            background-color:blue;
+        }
+    </style>
+    <script>
+        function ob(){
+            var x=document.getElementById("translateX").value;
+            var y=document.getElementById("translateY").value;
+            var z=document.getElementById("translateZ").value;
+            document.getElementById("d2").style.transform="rotateX("+x+"deg)"+"rotateY("+y+"deg)"+"rotateZ("+z+"deg)";
+            document.getElementById("span1").innerHTML=x;
+            document.getElementById("span2").innerHTML=y;
+            document.getElementById("span3").innerHTML=z;
+        }
+    </script>
+</head>
+<body>
+    <div id="d1">
+        <div id="d2"></div>
+    </div>
+    <div id="op">
+        <p>ratoteX:<span id="span1">0</span>deg</p>
+        <input type="range" min="-360" max="360" id="translateX" class="range-contral" value="0" onchange="ob()"><br/>
+        <p>ratoteY:<span id="span2">0</span>deg</p>
+        <input type="range" min="-360" max="360" id="translateY" class="range-contral" value="0" onchange="ob()"><br/>
+        <p>ratoteZ:<span id="span3">0</span>deg</p>
+        <input type="range" min="-360" max="360" id="translateZ" class="range-contral" value="0" onchange="ob()"><br/>
+    </div>
+    <div class="d1" id="D11"></div>
+    <div class="d1" id="D22"></div>
+    <div class="d1" id="D3"></div>
+    <div class="d1" id="D4"></div>
+</body>
+</html>
